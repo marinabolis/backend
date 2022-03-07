@@ -6,14 +6,17 @@ use Illuminate\Support\Facedes\Hash;
 use App\Models\User;
 // use App\User;
 
-use Tymon\JWTAuth\Facedes\JWTAuth;
-use Tymon\JWTAuth\Exceptions\JWTExceptions;
+// use Tymon\JWTAuth\Facedes\JWTAuth;
+// use Tymon\JWTAuth\Exceptions\JWTExceptions;
+
+use Tymon\JWTAuth\Exceptions\JWTException;
+use Tymon\JWTAuth\Exceptions\TokenInvalidException;
+use Tymon\JWTAuth\Exceptions\UserNotDefinedException;
+use Tymon\JWTAuth\Facades\JWTAuth; 
 
 
 
 
-
-// use App\Http\Controllers\Log;
 
 class UserController extends Controller
 {
@@ -24,10 +27,10 @@ class UserController extends Controller
      */
 
 
-    // public function index()
-    // {
-    //     //
-    // }
+    public function index()
+    {
+        
+    }
 
 
 // ************ register *******************
@@ -90,7 +93,8 @@ class UserController extends Controller
         $user = auth()->user();
         $data['token']=auth()->claims([
             'user_id' => $user-> id,
-            'email' => $user-> email
+            'email' => $user-> email,
+            'role'=>$user-> role
         ])->attempt($credentials);
 
         $response['data']= $data;
@@ -101,35 +105,7 @@ class UserController extends Controller
 
     }
 
-    // public function login(Request $request)
-    // {
-    //     // grab credentials from the request
-    //     $credentials = $request->only('username', 'password');
-    //     Log::info("username and password obtained from Request: ".json_encode($credentials));
     
-    //     try
-    //     {
-    //         if(JWTAuth::attempt($credentials)) // For Logging
-    //         {
-    //             Log::info("$ token = JWTAuth::attempt $ credentials Result: TRUE");
-    //         }else{
-    //             Log::info("$ token = JWTAuth::attempt $ credentials Result: FALSE");
-    //         }
-    
-    //         // attempt to verify the credentials and create a token for the user
-    //         if (! $token = JWTAuth::attempt($credentials))
-    //         {
-    //             return response()->json(['error' => 'invalid_credentials'], 401);
-    //         }
-    //     } catch (JWTException $e) {
-    //         // something went wrong whilst attempting to encode the token
-    //         return response()->json(['error' => 'could_not_create_token'], 500);
-    //     }
-    
-    //     Log::info("Generated token is: ".json_encode(compact('token')));
-    //     // all good so return the token
-    //     return response()->json(compact('token'));
-    // }
     
 
 

@@ -24,15 +24,17 @@ class DrugController extends Controller
   }
 
 
+// *********************addDrug***************************
 
   public function addDrug(Request $request)
   {
 
-$drug = Drug::create($request->all());
-return response($drug,201);
+    $drug = Drug::create($request->all());
+     return response($drug,201);
 
   }
 
+// *********************updateDrug***************************
 
   public function updateDrug(Request $request,$id)
   {
@@ -46,7 +48,7 @@ return response($drug,201);
   }
 
   
-
+// *********************deleteDrug***************************
   public function deleteDrug(Request $request,$id)
   {   
      $drug = Drug::find($id);

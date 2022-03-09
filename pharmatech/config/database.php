@@ -56,10 +56,11 @@ return [
             'collation' => 'utf8mb4_unicode_ci',
             'prefix' => '',
             'prefix_indexes' => true,
-            'strict' => true,
+            // 'strict' => true,
             'engine' => null,
 
-            'timezone'  => '+00:00',
+            'timezone'  => '+00:00',       // this change solved problem add Drugs 
+            'strict' => false,             // this change solved problem add Drugs 
             'options' => extension_loaded('pdo_mysql') ? array_filter([
                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
             ]) : [],

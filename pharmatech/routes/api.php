@@ -14,15 +14,22 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::middleware('sanctum:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+        return $request->user();
+     });
+
+
+// Route::post('register','App\Http\Controllers\UserController@register');
+// Route::post('login','App\Http\Controllers\UserController@login');
 
 
 
-Route::post('register','App\Http\Controllers\UserController@register');
-Route::post('login','App\Http\Controllers\UserController@login');
-
+Route::post('/register' , [UserController::class , 'register']);
+Route::post('/login' , [UserController::class , 'login']);
 // Route::middleware(['auth','isAdmin'])->group(function(){
 //     Route::get('user','App\Http\Controllers\UserController@index');
 
@@ -30,7 +37,7 @@ Route::post('login','App\Http\Controllers\UserController@login');
 
 
 
-
+// **************************** table drugs ***************************************
 Route::get('drugs','App\Http\Controllers\DrugController@getDrug');
 
 Route::get('drug/{id}','App\Http\Controllers\DrugController@getDrugById');

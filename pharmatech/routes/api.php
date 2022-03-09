@@ -29,7 +29,13 @@ Route::post('login','App\Http\Controllers\UserController@login');
 //  });
 
 
+
+
 Route::get('drugs','App\Http\Controllers\DrugController@getDrug');
 
+Route::get('drug/{id}','App\Http\Controllers\DrugController@getDrugById');
 
+Route::post('addDrug','App\Http\Controllers\DrugController@addDrug');
 
+Route::put('updateDrug/{id}','App\Http\Controllers\DrugController@updateDrug');
+Route::delete('deleteDrug/{id}','App\Http\Controllers\DrugController@deleteDrug');

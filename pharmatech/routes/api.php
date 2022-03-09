@@ -14,11 +14,22 @@ use App\Http\Controllers\UserController;
 |
 */
 
-// Route::middleware('sanctum:api')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-        return $request->user();
-     });
+Route::middleware('sanctum:api')->get('/user', function (Request $request) {
+    return $request->user();
+});
+
+
+
 Route::post('register','App\Http\Controllers\UserController@register');
 Route::post('login','App\Http\Controllers\UserController@login');
+
+// Route::middleware(['auth','isAdmin'])->group(function(){
+//     Route::get('user','App\Http\Controllers\UserController@index');
+
+//  });
+
+
+Route::get('drugs','App\Http\Controllers\DrugController@getDrug');
+
+
+

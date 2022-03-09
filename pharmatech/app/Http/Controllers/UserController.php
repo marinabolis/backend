@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facedes\Hash;
 use App\Models\User;
+use Illuminate\Support\Facedes\Auth;
 // use App\User;
 
 // use Tymon\JWTAuth\Facedes\JWTAuth;
@@ -27,9 +28,29 @@ class UserController extends Controller
      */
 
 
-    public function index()
+
+     //
+    public function index(Request $request, Closure $next)
     {
         
+            if(Auth::check()){
+                if(Auth::user()->role == 'admin')  //1=admin 
+                {
+                return $next($request);
+                }
+                else
+                {
+                return redirect('/home')->with('status','Access Denied! As you are not an Admin');
+                }
+                
+         }
+                
+                else{
+                return redirect('/login')->with('status','please login first');
+                
+                } 
+                
+                
     }
 
 
@@ -73,6 +94,7 @@ class UserController extends Controller
     {
      $credentials = $request->only('email','password');
         try{
+            // if email & pass incoreect
             if(!JWTAuth::attempt($credentials))
        
             {
@@ -83,13 +105,17 @@ class UserController extends Controller
                 return response()->json($response);
             }
 
+
         } catch(JWTExceptions $e){
             $response['data']=null;
             $response['code']=500;
             $response['message']='could Not create Token';
             return response()->json($response);
         }
+
+
         
+    //    if email & pass successfully
         $user = auth()->user();
         $data['token']=auth()->claims([
             'user_id' => $user-> id,
@@ -103,7 +129,39 @@ class UserController extends Controller
         $response['message']='login successfully';
         return response()->json($response);
 
+
+
+        //admin 
+//    $user = auth()->user();
+//    if(auth()->user()->hasRole('user')){
+
+//         $data['token']=auth()->claims([
+//             'user_id' => $user-> id,
+//             'email' => $user-> email,
+//             'role'=>$user-> role
+//         ])->attempt($credentials);
+
+//         $response['data']= $data;
+//         $response['status']=1;
+//         $response['code']=200;
+//         $response['message']='login successfully';
+//         return response()->json($response);
+//         }
+
+//         elseif(auth()->user()->hasRole('admin')){
+//             return redirect()->route('admin.home');
+//         }else{
+//             return response()->json([
+//                 'status' => false,
+//                 'message' => 'Stranger'
+//             ]);
+//         }
+
+   
+
     }
+
+
 
     
     

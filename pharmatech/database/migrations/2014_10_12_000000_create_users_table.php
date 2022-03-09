@@ -21,7 +21,8 @@ return new class extends Migration
             $table->string('password');
             $table->string('city');
             $table->string('street');
-            $table->string('role');
+            // $table->string('role');
+            $table->string('role')->default('users'); 
             $table->rememberToken();
             $table->timestamps();
         });

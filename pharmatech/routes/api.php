@@ -46,3 +46,13 @@ Route::post('addDrug','App\Http\Controllers\DrugController@addDrug');
 
 Route::put('updateDrug/{id}','App\Http\Controllers\DrugController@updateDrug');
 Route::delete('deleteDrug/{id}','App\Http\Controllers\DrugController@deleteDrug');
+
+// **************************** table orders ***************************************
+Route::get('orders','App\Http\Controllers\OrderController@getOrder');
+
+Route::get('orders/{id}','App\Http\Controllers\OrderController@getOrderById');
+
+Route::post('addOrder','App\Http\Controllers\OrderController@addOrder');
+
+Route::put('updateOrder/{id}','App\Http\Controllers\OrderController@updateOrder');
+Route::delete('deleteOrder/{id}','App\Http\Controllers\OrderController@deleteOrder');

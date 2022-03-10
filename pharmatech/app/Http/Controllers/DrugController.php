@@ -7,11 +7,14 @@ use App\Models\Drug;
 
 class DrugController extends Controller
 {
+  // *********** get all drugs**********************
    public function getDrug()
   {
     return response()->json(Drug::all(),200);
   }
 
+
+  // *************** get specific drug detail **********************
   
   public function getDrugById($id)
   {

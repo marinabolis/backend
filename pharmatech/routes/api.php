@@ -56,3 +56,13 @@ Route::post('addOrder','App\Http\Controllers\OrderController@addOrder');
 
 Route::put('updateOrder/{id}','App\Http\Controllers\OrderController@updateOrder');
 Route::delete('deleteOrder/{id}','App\Http\Controllers\OrderController@deleteOrder');
+
+// **************************** table users ***************************************
+Route::get('users','App\Http\Controllers\UserController@getUser');
+
+Route::get('users/{id}','App\Http\Controllers\UserController@getUserById');
+
+Route::post('addUser','App\Http\Controllers\UserController@addUser');
+
+Route::put('updateUser/{id}','App\Http\Controllers\UserController@updateUser');
+Route::delete('deleteUser/{id}','App\Http\Controllers\UserController@deleteUser');

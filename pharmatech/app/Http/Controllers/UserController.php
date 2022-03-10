@@ -128,7 +128,64 @@ class UserController extends Controller
         $response['code']=200;
         $response['message']='login successfully';
         return response()->json($response);
+    }
 
+
+
+
+    // *********** get all users**********************
+    public function getUser()
+    {
+      return response()->json(User::all(),200);
+    }
+
+// *************** get specific user detail **********************
+    public function getUserById($id)
+    {
+    $user = User::find($id);
+    if(is_null($user)){
+      return response()->json(['message'=>'User Not Found'],404);
+    }
+  
+    return response()->json($user::find($id),200);
+    }
+
+// *********************addUser***************************
+
+public function addUser(Request $request)
+{
+
+  $user = User::create($request->all());
+   return response($user,201);
+
+}
+
+
+// *********************updateUser***************************
+
+public function updateUser(Request $request,$id)
+{
+
+  $user = User::find($id);
+  if(is_null($user)){
+    return response()->json(['message'=>'User Not Found'],404);
+  }
+  $user->update($request->all());
+  return response($user,200);
+}
+
+
+// *********************deleteUser***************************
+public function deleteUser(Request $request,$id)
+{   
+   $user = User::find($id);
+   if(is_null($user)){
+    return response()->json(['message'=>'User Not Found'],404);
+}
+
+$user->delete();
+return response()->json(null,204);
+}
 
 
         //admin 
@@ -159,7 +216,7 @@ class UserController extends Controller
 
    
 
-    }
+   
 
 
 

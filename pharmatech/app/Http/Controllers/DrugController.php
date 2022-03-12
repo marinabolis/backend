@@ -32,6 +32,14 @@ class DrugController extends Controller
   public function addDrug(Request $request)
   {
 
+   // this condition to display image 
+   
+  //  if($request->hasfile('image')){
+  //    $completeFileName = $request->file('image')->getClientOriginaName();
+  //    dd($completeFileName);
+  //  }
+
+
     $drug = Drug::create($request->all());
      return response($drug,201);
 

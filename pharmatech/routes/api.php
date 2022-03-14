@@ -84,5 +84,16 @@ Route::delete('deleteCategory/{id}','App\Http\Controllers\CategoryController@del
 Route::post('storeUserDrug','App\Http\Controllers\UserDrugController@store');
 Route::get('userdrug/{id}','App\Http\Controllers\UserDrugController@show');
 // Route::put('updateUserDrug/{id}','App\Http\Controllers\UserDrugController@updateUserDrug');
-Route::delete('deleteUserDrug/{id}','App\Http\Controllers\UserDrugController@deleteDrug');
+Route::delete('deleteUserDrug/{id}','App\Http\Controllers\UserDrugController@deleteUserDrug');
 
+// **************************** tables Cart ******************************************************************
+
+Route::post('storeUserCart','App\Http\Controllers\CartController@storeCart');
+Route::get('userCart/{id}','App\Http\Controllers\CartController@showCart');
+Route::delete('deleteCart/{id}','App\Http\Controllers\CartController@deleteCart');
+
+// **************************** tables CartDrug ******************************************************************
+
+Route::post('storeCartDrug','App\Http\Controllers\CartDrugController@store');
+Route::get('CartDrug/{id}','App\Http\Controllers\CartDrugController@show');
+Route::delete('deleteCartDrug/{id}','App\Http\Controllers\CartDrugController@deleteCartDrug');

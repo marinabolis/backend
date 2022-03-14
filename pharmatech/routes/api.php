@@ -97,3 +97,12 @@ Route::delete('deleteCart/{id}','App\Http\Controllers\CartController@deleteCart'
 Route::post('storeCartDrug','App\Http\Controllers\CartDrugController@store');
 Route::get('CartDrug/{id}','App\Http\Controllers\CartDrugController@show');
 Route::delete('deleteCartDrug/{id}','App\Http\Controllers\CartDrugController@deleteCartDrug');
+
+
+
+
+// **************************** tables OrderDrug ******************************************************************
+
+Route::post('storeOrderDrug','App\Http\Controllers\OrderDrugController@storeOrderDrug');
+Route::get('orderDrug/{id}','App\Http\Controllers\OrderDrugController@showOrderDrug');
+Route::delete('deleteOrderDrug/{id}','App\Http\Controllers\OrderDrugController@deleteOrderDrug');

@@ -83,5 +83,6 @@ Route::delete('deleteCategory/{id}','App\Http\Controllers\CategoryController@del
 
 Route::post('storeUserDrug','App\Http\Controllers\UserDrugController@store');
 Route::get('userdrug/{id}','App\Http\Controllers\UserDrugController@show');
-Route::put('updateUserDrug/{id}','App\Http\Controllers\UserDrugController@updateUserDrug');
+// Route::put('updateUserDrug/{id}','App\Http\Controllers\UserDrugController@updateUserDrug');
 Route::delete('deleteUserDrug/{id}','App\Http\Controllers\UserDrugController@deleteDrug');
+

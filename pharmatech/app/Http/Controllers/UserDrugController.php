@@ -29,21 +29,21 @@ class UserDrugController extends Controller
     }
 
 
- // *************************** update  user drug  ************************************
-    public function updateUserDrug(Request $request,$id)
-    {
+//  // *************************** update  user drug  ************************************
+//     public function updateUserDrug(Request $request,$id)
+//     {
   
-      $userdrug = UserDrug::find($id);
-      if(is_null($userdrug)){
-        return response()->json(['message'=>'userdrug Not Found'],404);
-      }
-      $userdrug->update($request->all());
-      return response($userdrug,200);
-    }
+//       $userdrug = UserDrug::find($id);
+//       if(is_null($userdrug)){
+//         return response()->json(['message'=>'userdrug Not Found'],404);
+//       }
+//       $userdrug->update($request->all());
+//       return response($userdrug,200);
+//     }
   
 // *************************** delete   user drug  ************************************
 
-public function deleteDrug(Request $request,$id)
+public function deleteUserDrug(Request $request,$id)
   {   
      $userdrug = UserDrug::find($id);
      if(is_null($userdrug)){

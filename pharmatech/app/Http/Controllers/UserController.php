@@ -74,7 +74,7 @@ class UserController extends Controller
                 'password'=>bcrypt($request->password),
                 'city'=>$request-> city,
                 'street'=>$request->street,
-                'role'=>$request->role
+                // 'role'=>$request->role
                
             ]);
     

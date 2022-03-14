@@ -30,6 +30,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('/register' , [UserController::class , 'register']);
 Route::post('/login' , [UserController::class , 'login']);
+
 // Route::middleware(['auth','isAdmin'])->group(function(){
 //     Route::get('user','App\Http\Controllers\UserController@index');
 
@@ -76,3 +77,5 @@ Route::post('addCategory','App\Http\Controllers\CategoryController@addCategory')
 
 Route::put('updateCategory/{id}','App\Http\Controllers\CategoryController@updateCategory');
 Route::delete('deleteCategory/{id}','App\Http\Controllers\CategoryController@deleteCategory');
+
+

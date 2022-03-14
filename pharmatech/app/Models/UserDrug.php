@@ -12,4 +12,5 @@ class UserDrug extends Model
         'order_id',
         'user_id'
     ];
+    
 }

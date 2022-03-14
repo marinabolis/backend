@@ -30,28 +30,29 @@ class UserController extends Controller
 
 
      //
-    public function index(Request $request, Closure $next)
-    {
+     
+    // public function index(Request $request, Closure $next)
+    // {
         
-            if(Auth::check()){
-                if(Auth::user()->role == 'admin')  //1=admin 
-                {
-                return $next($request);
-                }
-                else
-                {
-                return redirect('/home')->with('status','Access Denied! As you are not an Admin');
-                }
+    //         if(Auth::check()){
+    //             if(Auth::user()->role == 'admin')  //1=admin 
+    //             {
+    //             return $next($request);
+    //             }
+    //             else
+    //             {
+    //             return redirect('/home')->with('status','Access Denied! As you are not an Admin');
+    //             }
                 
-         }
+    //      }
                 
-                else{
-                return redirect('/login')->with('status','please login first');
+    //             else{
+    //             return redirect('/login')->with('status','please login first');
                 
-                } 
+    //             } 
                 
                 
-    }
+    // }
 
 
 // ************ register *******************

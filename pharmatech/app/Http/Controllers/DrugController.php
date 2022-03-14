@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Drug;
 
+//for display image in drugs 2 lines
+// use Illuminate\Support\Facades\File;
+
+
 class DrugController extends Controller
 {
   // *********** get all drugs**********************
@@ -31,19 +35,68 @@ class DrugController extends Controller
 
   public function addDrug(Request $request)
   {
+//    // this condition to display image 
+//    $drug=new Drug;
+//    $drug->trade_name_ar;
+//   $drug->trade_name_en;
+//   $drug->price   ;
+//   $drug->description ;
+  
+// //validatin image 
+//    if($request->hasfile('image')){
+//      $completeFileName = $request->file('image')->getClientOriginalName();
+//      $fileNameOnly = pathinfo($completeFileName,PATHINFO_FILENAME);
+//      $extenshion = $request->file('image')->getClientOriginalExtension();
+//      $compPic = str_replace('', '_',$fileNameOnly).'_'.rand() . '_'.time(). '.'.$extenshion; //"concor_1213153442_1647133567.jpg"
+//          $path = $request->file('image')->storeAs('public/drugs', $compPic);
+//     // dd($path);  
+//       $drug->image = $compPic;
+//    }
 
-   // this condition to display image 
-   
-  //  if($request->hasfile('image')){
-  //    $completeFileName = $request->file('image')->getClientOriginaName();
-  //    dd($completeFileName);
-  //  }
+//    $drug->production_date ;
+//   $drug->expiry_date ; 
+//   $drug->save();
+//      $drug = Drug::create($request->all());
+//      return response($drug,201);
 
 
-    $drug = Drug::create($request->all());
-     return response($drug,201);
 
-  }
+// $file=$request->file('file');
+// $uploadPath ="public/drugs";
+// $originalImage=$file->getClientOriginalName();
+// $file->move($uploadPath,$originalImage);
+// $drugModel= new Drug();
+// $data=$drugModel->addDrug($request->all());
+
+
+
+$uploadFiles =$request->image->store('public/drugs');
+$drug= new Drug;
+$drug->trade_name_ar = $request-> trade_name_ar;
+$drug->trade_name_en = $request-> trade_name_en;
+$drug->price = $request-> price;
+$drug->description = $request-> description;
+$drug->image = $request-> image->hashName();
+$drug->production_date = $request-> production_date;
+$drug->expiry_date = $request-> expiry_date;
+$result = $drug->save();
+if ($result){
+  return ["result"=>"drug added"];
+
+}else{
+  return ["result"=>"drug not  added"];
+}
+
+
+   }
+
+
+  
+
+    // $drug = Drug::create($request->all());
+    //  return response($drug,201);
+
+  
 
 // *********************updateDrug***************************
 

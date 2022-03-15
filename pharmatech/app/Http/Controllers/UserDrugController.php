@@ -15,10 +15,10 @@ class UserDrugController extends Controller
         $userdrug->user_id = $request-> user_id;
         $result = $userdrug->save();
         if ($result){
-        return ["result"=>"usergrug added"];
+        return ["result"=>"userdrug added"];
 
          }else{
-           return ["result"=>"usergrug not  added"];
+           return ["result"=>"userdrug not  added"];
          }
         }
 
@@ -30,24 +30,25 @@ class UserDrugController extends Controller
 
 
 //  // *************************** update  user drug  ************************************
-//     public function updateUserDrug(Request $request,$id)
-//     {
+    public function updateUserDrug(Request $request,$id)
+    {
   
-//       $userdrug = UserDrug::find($id);
-//       if(is_null($userdrug)){
-//         return response()->json(['message'=>'userdrug Not Found'],404);
-//       }
-//       $userdrug->update($request->all());
-//       return response($userdrug,200);
-//     }
+      $userdrug = UserDrug::find($id);
+      if(is_null($userdrug)){
+        return response()->json(['message'=>'userdrug Not Found'],404);
+      }
+      $userdrug->update($request->all());
+      return response($userdrug,200);
+    }
   
+    
 // *************************** delete   user drug  ************************************
 
 public function deleteUserDrug(Request $request,$id)
   {   
      $userdrug = UserDrug::find($id);
      if(is_null($userdrug)){
-      return response()->json(['message'=>'Drug Not Found'],404);
+      return response()->json(['message'=>'userdrug Not Found'],404);
   }
 
   $userdrug->delete();

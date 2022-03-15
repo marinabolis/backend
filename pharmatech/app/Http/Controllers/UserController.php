@@ -5,7 +5,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facedes\Hash;
 use App\Models\User;
 use Illuminate\Support\Facedes\Auth;
-// use App\User;
 
 // use Tymon\JWTAuth\Facedes\JWTAuth;
 // use Tymon\JWTAuth\Exceptions\JWTExceptions;

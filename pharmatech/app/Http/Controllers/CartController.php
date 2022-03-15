@@ -43,4 +43,18 @@ public function deleteCart(Request $request,$id)
   $cart->delete();
   return response()->json(null,204);
 }
+
+
+
+  // *************************** update  Cart ************************************
+  public function updateCart(Request $request,$id)
+  {
+
+    $cart = Cart::find($id);
+    if(is_null($cart)){
+      return response()->json(['message'=>'Cart Not Found'],404);
+    }
+    $cart->update($request->all());
+    return response($cart,200);
+  }
 }

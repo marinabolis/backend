@@ -108,6 +108,8 @@ if ($result){
       return response()->json(['message'=>'Drug Not Found'],404);
     }
     $drug->update($request->all());
+    $drug->save();
+
     return response($drug,200);
   }
 

@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Drug;
-
+use App\Models\Category;
 //for display image in drugs 2 lines
 // use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\DB;   // class DB --> joinDrugCategory fun 
 
 
 class DrugController extends Controller
@@ -127,8 +128,16 @@ if ($result){
 }
 
 
+// *********************join 2 tables (drug & category )***************************
+public function joinDrugCategory()
+{ 
 
-
+$data = DB::table('categories')
+    ->join('drugs','categories.id','=','drugs.category_id')
+    ->select('categories.name','drugs.trade_name_ar','drugs.trade_name_en','drugs.price')
+    ->get();
+return $data ;
+  }  
 
 }
 

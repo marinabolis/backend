@@ -31,9 +31,7 @@ Route::post('addDrug','App\Http\Controllers\DrugController@addDrug');
 Route::put('updateDrug/{id}','App\Http\Controllers\DrugController@updateDrug');
 Route::delete('deleteDrug/{id}','App\Http\Controllers\DrugController@deleteDrug');
 
-
-Route::get('joinDrugCategory','App\Http\Controllers\DrugController@joinDrugCategory');
-
+Route::get('productsByCategory/{id}','App\Http\Controllers\DrugController@productsByCategory');
 
 // **************************** table orders ***************************************
 Route::get('orders','App\Http\Controllers\OrderController@getOrder');

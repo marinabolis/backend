@@ -129,14 +129,20 @@ if ($result){
 
 
 // *********************join 2 tables (drug & category )***************************
-public function joinDrugCategory()
-{ 
+// public function joinDrugCategory()
+// { 
 
-$data = DB::table('categories')
-    ->join('drugs','categories.id','=','drugs.category_id')
-    ->select('categories.name','drugs.trade_name_ar','drugs.trade_name_en','drugs.price')
-    ->get();
-return $data ;
+// $data = DB::table('categories')
+//     ->join('drugs','categories.id','=','drugs.category_id')
+//     ->select('categories.name','drugs.trade_name_ar','drugs.trade_name_en','drugs.price')
+//     ->get();
+// return $data ;
+//   }  
+
+public function productsByCategory($id)
+{ 
+$productsByCategory = Category::where('id', $id)->with('drugs')->get();
+return $productsByCategory ;
   }  
 
 }

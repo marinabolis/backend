@@ -16,33 +16,46 @@ class OrderDrugController extends Controller
          $result = $orderdrug->save();
          if ($result){
          return ["result"=>"orderdrug added"];
- 
+
           }else{
             return ["result"=>"orderdrug not  added"];
           }
          }
- 
+
     // *************************** show Order drug ************************************
      public function showOrderDrug($id)
      {
              return OrderDrug :: find($id);
      }
- 
- 
+
+
 
  // *************************** delete   Order drug  ************************************
- 
+
  public function deleteOrderDrug(Request $request,$id)
-   {   
+   {
       $orderdrug = OrderDrug::find($id);
       if(is_null($orderdrug)){
        return response()->json(['message'=>'orderdrug Not Found'],404);
    }
- 
+
    $orderdrug->delete();
    return response()->json(null,204);
  }
+
+// *************************** update   Order drug  ************************
+
+ public function updateOrderDrug(Request $request,$id)
+ {
+
+   $orderdrug = OrderDrug::find($id);
+   if(is_null($orderdrug)){
+     return response()->json(['message'=>'orderdrug Not Found'],404);
+   }
+   $orderdrug->update($request->all());
+   return response($orderdrug,200);
+ }
  
- 
- 
+
+
 }

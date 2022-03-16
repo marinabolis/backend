@@ -70,9 +70,10 @@ Route::put('updateCart/{id}','App\Http\Controllers\CartController@updateCart');
 Route::post('storeCartDrug','App\Http\Controllers\CartDrugController@store');
 Route::get('CartDrug/{id}','App\Http\Controllers\CartDrugController@show');
 Route::delete('deleteCartDrug/{id}','App\Http\Controllers\CartDrugController@deleteCartDrug');
-
+Route::put('updateCartDrug/{id}','App\Http\Controllers\CartDrugController@updateCartDrug');
 // **************************** tables OrderDrug ******************************************************************
 
 Route::post('storeOrderDrug','App\Http\Controllers\OrderDrugController@storeOrderDrug');
 Route::get('orderDrug/{id}','App\Http\Controllers\OrderDrugController@showOrderDrug');
 Route::delete('deleteOrderDrug/{id}','App\Http\Controllers\OrderDrugController@deleteOrderDrug');
+Route::put('updateOrderDrug/{id}','App\Http\Controllers\OrderDrugController@updateOrderDrug');

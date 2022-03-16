@@ -7,7 +7,7 @@ use App\Models\CartDrug;
 
 class CartDrugController extends Controller
 {
-    
+
     // *************************** store cart drug  ************************************
     public function store(Request $request)
     {
@@ -32,21 +32,21 @@ class CartDrugController extends Controller
 
 
 //  // *************************** update  cart drug  ************************************
-//     public function updateUserDrug(Request $request,$id)
-//     {
-  
-//       $userdrug = UserDrug::find($id);
-//       if(is_null($userdrug)){
-//         return response()->json(['message'=>'userdrug Not Found'],404);
-//       }
-//       $userdrug->update($request->all());
-//       return response($userdrug,200);
-//     }
-  
+    public function updateCartDrug(Request $request,$id)
+    {
+
+      $cartdrug = CartDrug::find($id);
+      if(is_null($cartdrug)){
+        return response()->json(['message'=>'cartdrug Not Found'],404);
+      }
+      $cartdrug->update($request->all());
+      return response($cartdrug,200);
+    }
+
 // *************************** delete   cart drug  ************************************
 
 public function deleteCartDrug(Request $request,$id)
-  {   
+  {
      $cartdrug = CartDrug::find($id);
      if(is_null($cartdrug)){
       return response()->json(['message'=>'Drug Not Found'],404);

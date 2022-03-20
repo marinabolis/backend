@@ -65,5 +65,11 @@ public function getUserHasCart(Request $request)
 return User :: whereHas('cart') ->get();
 }
 
+// *************************** getUserHasNotCart ************************
+
+public function getUserHasNotCart(Request $request)
+{
+return User :: whereDoesntHave('cart') ->get();
+}
 
 }

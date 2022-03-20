@@ -63,13 +63,13 @@ Route::delete('deleteUserDrug/{id}','App\Http\Controllers\UserDrugController@del
 
 // **************************** tables Cart ******************************************************************
 Route::post('storeUserCart','App\Http\Controllers\CartController@storeCart');
-Route::get('userCart/{id}','App\Http\Controllers\CartController@getUserHasCart');
+Route::get('userCart/{id}','App\Http\Controllers\CartController@showCart');
 Route::delete('deleteCart/{id}','App\Http\Controllers\CartController@deleteCart');
 Route::put('updateCart/{id}','App\Http\Controllers\CartController@updateCart');
-
-
 // test rel 
 Route::get('getUserHasCart','App\Http\Controllers\CartController@getUserHasCart');
+Route::get('getUserHasNotCart','App\Http\Controllers\CartController@getUserHasNotCart');
+
 // **************************** tables CartDrug ******************************************************************
 Route::post('storeCartDrug','App\Http\Controllers\CartDrugController@store');
 Route::get('CartDrug/{id}','App\Http\Controllers\CartDrugController@show');

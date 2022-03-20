@@ -146,15 +146,7 @@ public function productsByCategory($id)
 $productsByCategory = Category::where('id', $id)->with('drugs')->get();
 return $productsByCategory ;
   }  
-
-
-
-
-  // public function productsByuser($id)
-  // { 
-  // $productsByuser = User::where('id', $id)->with('drugs')->get();
-  // return $productsByuser ;
-  //   }  
+ 
 
 
 

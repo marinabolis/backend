@@ -89,8 +89,9 @@ public function drugs() {
 
 public function cart() {
 
-    return $this->belongsTo(Cart::class);
+    // return $this->belongsTo(Cart::class);
 
+    return $this->hasOne(Cart::class,'user_id');    // ** check write or not 
     
 }
 

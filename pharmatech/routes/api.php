@@ -32,7 +32,7 @@ Route::put('updateDrug/{id}','App\Http\Controllers\DrugController@updateDrug');
 Route::delete('deleteDrug/{id}','App\Http\Controllers\DrugController@deleteDrug');
 
 Route::get('productsByCategory/{id}','App\Http\Controllers\DrugController@productsByCategory');
-Route::get('productsByuser/{id}','App\Http\Controllers\DrugController@productsByuser');
+
 // **************************** table orders ***************************************
 Route::get('orders','App\Http\Controllers\OrderController@getOrder');
 Route::get('orders/{id}','App\Http\Controllers\OrderController@getOrderById');

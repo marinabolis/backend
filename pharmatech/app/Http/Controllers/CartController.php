@@ -58,6 +58,12 @@ public function deleteCart(Request $request,$id)
     return response($cart,200);
   }
 
+// *************************** rel bet user & cart ************************************
+// *************************** getUserHasCart ************************
+public function getUserHasCart(Request $request)
+{
+return User :: whereHas('cart') ->get();
+}
 
 
 }

@@ -32,13 +32,14 @@ Route::put('updateDrug/{id}','App\Http\Controllers\DrugController@updateDrug');
 Route::delete('deleteDrug/{id}','App\Http\Controllers\DrugController@deleteDrug');
 
 Route::get('productsByCategory/{id}','App\Http\Controllers\DrugController@productsByCategory');
-
+Route::get('productsByuser/{id}','App\Http\Controllers\DrugController@productsByuser');
 // **************************** table orders ***************************************
 Route::get('orders','App\Http\Controllers\OrderController@getOrder');
 Route::get('orders/{id}','App\Http\Controllers\OrderController@getOrderById');
 Route::post('addOrder','App\Http\Controllers\OrderController@addOrder');
 Route::put('updateOrder/{id}','App\Http\Controllers\OrderController@updateOrder');
 Route::delete('deleteOrder/{id}','App\Http\Controllers\OrderController@deleteOrder');
+
 
 // **************************** table users ***************************************
 Route::get('users','App\Http\Controllers\UserController@getUser');
@@ -62,7 +63,7 @@ Route::delete('deleteUserDrug/{id}','App\Http\Controllers\UserDrugController@del
 
 // **************************** tables Cart ******************************************************************
 Route::post('storeUserCart','App\Http\Controllers\CartController@storeCart');
-Route::get('userCart/{id}','App\Http\Controllers\CartController@showCart');
+Route::get('userCart/{id}','App\Http\Controllers\CartController@getUserHasCart');
 Route::delete('deleteCart/{id}','App\Http\Controllers\CartController@deleteCart');
 Route::put('updateCart/{id}','App\Http\Controllers\CartController@updateCart');
 

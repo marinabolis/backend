@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Drug;
 use App\Models\Category;
+use App\Models\User;
 //for display image in drugs 2 lines
 // use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\DB;   // class DB --> joinDrugCategory fun 
@@ -69,8 +70,6 @@ class DrugController extends Controller
 // $drugModel= new Drug();
 // $data=$drugModel->addDrug($request->all());
 
-
-
 $uploadFiles =$request->image->store('public/drugs');
 $drug= new Drug;
 $drug->trade_name_ar = $request-> trade_name_ar;
@@ -80,23 +79,26 @@ $drug->description = $request-> description;
 $drug->image = $request-> image->hashName();
 $drug->production_date = $request-> production_date;
 $drug->expiry_date = $request-> expiry_date;
-$result = $drug->save();
-if ($result){
-  return ["result"=>"drug added"];
 
-}else{
-  return ["result"=>"drug not  added"];
+$drug->save();
+return response($drug,201);
+
+// $result = $drug->save();
+// if ($result){
+// return ["result"=>"drug added"];
+
+// }else{
+// return ["result"=>"drug not added"];
+// }
+
 }
-
-
-   }
 
 
   
 
-    // $drug = Drug::create($request->all());
-    //  return response($drug,201);
-
+  //   $drug = Drug::create($request->all());
+  //    return response($drug,201);
+  // }
   
 
 // *********************updateDrug***************************
@@ -144,6 +146,17 @@ public function productsByCategory($id)
 $productsByCategory = Category::where('id', $id)->with('drugs')->get();
 return $productsByCategory ;
   }  
+
+
+
+
+  // public function productsByuser($id)
+  // { 
+  // $productsByuser = User::where('id', $id)->with('drugs')->get();
+  // return $productsByuser ;
+  //   }  
+
+
 
 }
 

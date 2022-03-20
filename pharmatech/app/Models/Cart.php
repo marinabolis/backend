@@ -18,6 +18,8 @@ class Cart extends Model
     public function  user() {
         return $this->belongsTo(User::class);
     }
+
+    
     public function  drugs() {
         return $this->belongsToMany(Drug::class, 'cart_drugs', 'drug_id', 'cart_id');
 }

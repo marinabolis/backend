@@ -57,4 +57,7 @@ public function deleteCart(Request $request,$id)
     $cart->update($request->all());
     return response($cart,200);
   }
+
+
+
 }

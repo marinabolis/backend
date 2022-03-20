@@ -88,7 +88,10 @@ public function drugs() {
 }
 
 public function cart() {
+
     return $this->belongsTo(Cart::class);
+
+    
 }
 
 }

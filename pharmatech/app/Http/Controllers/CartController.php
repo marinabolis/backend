@@ -72,4 +72,16 @@ public function getUserHasNotCart(Request $request)
 return User :: whereDoesntHave('cart') ->get();
 }
 
+
+// *************************** getUserWithCart ************************
+
+public function getUserWithCart(Request $request,$id)
+{
+$cart=Cart :: with(['user'=>function ($q){
+$q ->select ('id','name','city');
+}
+]) ->find($id);
+return $cart;
+}
+
 }

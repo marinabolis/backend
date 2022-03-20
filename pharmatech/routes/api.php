@@ -69,7 +69,7 @@ Route::put('updateCart/{id}','App\Http\Controllers\CartController@updateCart');
 // test rel 
 Route::get('getUserHasCart','App\Http\Controllers\CartController@getUserHasCart');
 Route::get('getUserHasNotCart','App\Http\Controllers\CartController@getUserHasNotCart');
-
+Route::get('getUserWithCart/{id}','App\Http\Controllers\CartController@getUserWithCart');
 // **************************** tables CartDrug ******************************************************************
 Route::post('storeCartDrug','App\Http\Controllers\CartDrugController@store');
 Route::get('CartDrug/{id}','App\Http\Controllers\CartDrugController@show');

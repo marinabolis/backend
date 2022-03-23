@@ -99,6 +99,68 @@ class RelationCartDrugController extends Controller
 
             
 
+  //**********************  delete   ************************************* */
+//          public function removeDrugFromCart(Request $request)
+// {
+//         $drug = Drug::find(42);
+
+//         $cart->carts()->detach($drug);
+        
+//         return 'Success';
+
+
+//         $category = Category::find(2);
+// $product = Product::find(1);
+
+// $product->categories()->detach($category);
+// }
+
+
+
+// *************************** delete   Not Run ************************************
+
+public function removeDrugFromCart(Request $request,$id)
+  {   
+    //   return $id ;
+     $drug = Drug::find($id);
+    //  return $drug;
+     if(is_null($drug)){
+      return response()->json(['message'=>'drug Not Found'],404);
+  }
+//   $cart = Cart::find($ids);
+//   return $cart;
+//   if(is_null($cart)){
+//     return response()->json(['message'=>'Cart Not Found'],404);
+// }
+
+//   $drug->carts()->detach($drug);
+  $cart = Cart::get();
+  return $cart;
+  $cart->drugs()->detach($drug);
+  
+  return response()->json(['message'=>'delet success '],204);
+}
+
+
+
+
+
+// *************************** delete  done ************************************
+
+public function deleteeeee(Request $request,$id)
+{ 
+  
+ $cart = Cart::find($id); 
+// return $cart; 
+    if (!$cart){
+
+     return ["result"=>"store Drugs In Cart Not removed "];}
+     else{ 
+
+      $cart->drugs()->detach($request -> id);
+ return response()->json(['message'=>'success'],200);
+     } 
+   } 
          
 
    

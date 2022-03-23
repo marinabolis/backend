@@ -24,8 +24,28 @@ class Drug extends Model
         'expiry_date',
         'category_id'
     ];
+    
+
+    //******************** hidden ***************** */
+    protected $hidden = ['created_at','updated_at','pivot' ];
+    //******************************** */
+
+    
 
     public function category() {
         return $this->belongsTo(Category::class);
+    }
+
+
+
+    //*************** rel bet Drug & order ************************* */
+    public function orders() {
+        return $this->belongsToMany(Order::class,'order_drugs','drug_id','order_id','id','id');
+    }
+
+
+      //*************** rel bet Drug & cart ************************* */
+      public function carts() {
+        return $this->belongsToMany(Cart::class,'cart_drugs','drug_id','cart_id','id','id');
     }
 }

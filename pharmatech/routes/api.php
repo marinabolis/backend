@@ -66,6 +66,8 @@ Route::post('storeUserCart','App\Http\Controllers\CartController@storeCart');
 Route::get('userCart/{id}','App\Http\Controllers\CartController@showCart');
 Route::delete('deleteCart/{id}','App\Http\Controllers\CartController@deleteCart');
 Route::put('updateCart/{id}','App\Http\Controllers\CartController@updateCart');
+
+
 // test rel 
 Route::get('getUserHasCart','App\Http\Controllers\CartController@getUserHasCart');
 Route::get('getUserHasNotCart','App\Http\Controllers\CartController@getUserHasNotCart');
@@ -81,3 +83,27 @@ Route::post('storeOrderDrug','App\Http\Controllers\OrderDrugController@storeOrde
 Route::get('orderDrug/{id}','App\Http\Controllers\OrderDrugController@showOrderDrug');
 Route::delete('deleteOrderDrug/{id}','App\Http\Controllers\OrderDrugController@deleteOrderDrug');
 Route::put('updateOrderDrug/{id}','App\Http\Controllers\OrderDrugController@updateOrderDrug');
+
+
+
+
+// **************************** rel bet  Order & Drug ************************************************
+
+
+// Route::get('getOrdersByDrugs/{id}','App\Http\Controllers\RelationOrderDrugController@getOrdersByDrugs');
+// Route::get('getOrdersForDrugsIds/{id}','App\Http\Controllers\RelationOrderDrugController@getOrdersForDrugsIds');
+// Route::get('getDrugsForOrdersIds/{id}','App\Http\Controllers\RelationOrderDrugController@getDrugsForOrdersIds');
+// Route::get('getDrugsForOrdersIdsNotAll/{id}','App\Http\Controllers\RelationOrderDrugController@getDrugsForOrdersIdsNotAll');
+
+
+// Route::get('test/{id}','App\Http\Controllers\RelationOrderDrugController@test');
+// mistake from start here
+
+
+// Route::post('save_orders_to_drug/{drug_id}','App\Http\Controllers\RelationOrderDrugController@save_orders_to_drug');
+// Route::post('storeeee','App\Http\Controllers\RelationOrderDrugController@storeeee');
+
+
+
+
+

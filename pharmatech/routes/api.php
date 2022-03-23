@@ -106,4 +106,6 @@ Route::put('updateOrderDrug/{id}','App\Http\Controllers\OrderDrugController@upda
 
 
 
+// **************************** rel bet Cart & Drug ************************************************
 
+Route::get('getDrugsForCartsIds/{id}','App\Http\Controllers\RelationCartDrugController@getDrugsForCartsIds');

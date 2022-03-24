@@ -109,7 +109,7 @@ Route::put('updateOrderDrug/{id}','App\Http\Controllers\OrderDrugController@upda
 // **************************** rel bet Cart & Drug ************************************************
 
 Route::get('getDrugsForCartsIds/{id}','App\Http\Controllers\RelationCartDrugController@getDrugsForCartsIds');
-Route::post('storeDrugsInCart/{id}','App\Http\Controllers\RelationCartDrugController@storeDrugsInCart'); 
+Route::post('storeDrugsInCart','App\Http\Controllers\RelationCartDrugController@storeDrugsInCart'); 
 Route::delete('removeDrugFromCart/{id}','App\Http\Controllers\RelationCartDrugController@removeDrugFromCart'); // not run 
 
 Route::delete('ddeleteeeeeelete/{id}','App\Http\Controllers\RelationCartDrugController@deleteeeee');

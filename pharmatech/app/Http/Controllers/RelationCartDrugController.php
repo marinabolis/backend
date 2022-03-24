@@ -16,14 +16,19 @@ class RelationCartDrugController extends Controller
 
 
          //**********************  insert   done run  ************************************* */
-         public function storeDrugsInCart(Request $request,$id)
+         public function storeDrugsInCart(Request $request)
          { 
            
-          $cart = Cart::find($id); 
+             $cart = Cart::create([
+             'user_id'  => '7'
+              ]);
+
+          // $cart = Cart::find($id); 
 
              if (!$cart){
 
-              return ["result"=>"store Drugs In Cart Not added"];}
+              return ["result"=>"store Drugs In Cart Not added"];
+            }
               else{ 
           $cart -> drugs() -> syncWithoutDetaching ([$request -> id]) ;
           return response()->json(['message'=>'success'],200);

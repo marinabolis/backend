@@ -72,18 +72,18 @@ class DrugController extends Controller
 
 
 
-// $uploadFiles =$request->image->store('public/drugs');
-// $drug= new Drug;
-// $drug->trade_name_ar = $request-> trade_name_ar;
-// $drug->trade_name_en = $request-> trade_name_en;
-// $drug->price = $request-> price;
-// $drug->description = $request-> description;
-// $drug->image = $request-> image->hashName();
-// $drug->production_date = $request-> production_date;
-// $drug->expiry_date = $request-> expiry_date;
+$uploadFiles =$request->image->store('public/drugs');
+$drug= new Drug;
+$drug->trade_name_ar = $request-> trade_name_ar;
+$drug->trade_name_en = $request-> trade_name_en;
+$drug->price = $request-> price;
+$drug->description = $request-> description;
+$drug->image = $request-> image->hashName();
+$drug->production_date = $request-> production_date;
+$drug->expiry_date = $request-> expiry_date;
 
-// $drug->save();
-// return response($drug,201);
+$drug->save();
+return response($drug,201);
 
 
 
@@ -95,14 +95,14 @@ class DrugController extends Controller
 // return ["result"=>"drug not added"];
 // }
 
-// }
+}
 
 
   
 
-    $drug = Drug::create($request->all());
-     return response($drug,201);
-  }
+  //   $drug = Drug::create($request->all());
+  //    return response($drug,201);
+  // }
   
 
 // *********************updateDrug***************************

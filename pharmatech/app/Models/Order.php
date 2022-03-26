@@ -31,4 +31,14 @@ class Order extends Model
     return $this->belongsToMany(Drug::class,'order_drugs','order_id','drug_id','id','id');
 }
 
+
+
+
+//******************  rel 1:m bet user & order ****************** */
+public function  user() {
+  return $this->belongsTo(User::class);
+}
+
+
+
 }

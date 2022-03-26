@@ -22,6 +22,14 @@ class Cart extends Model
           //*************** rel bet Drug & cart ************************* */
     public function  drugs() {
         // return $this->belongsToMany(Drug::class, 'cart_drugs', 'drug_id', 'cart_id','id','id');
-        return $this->belongsToMany(Drug::class, 'cart_drugs', 'cart_id','drug_id','id','id');
+
+
+        // return $this->belongsToMany(Drug::class, 'cart_drugs', 'cart_id','drug_id','id','id');
+
+
+//, 'cart_id','drug_id','id','id'
+
+       //******try add drug_quantity*****
+        return $this->belongsToMany(Drug::class, 'cart_drugs')->withPivot(['drug_quantity']);
 }
 }

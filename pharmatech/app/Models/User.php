@@ -95,4 +95,21 @@ public function cart() {
     
 }
 
+
+
+
+//*************** rel bet user & Order    1:m ************************* */
+public function  orders() {
+    return $this->hasMany(Order::class);
+  }
+  
+
+
+
+//******************  ************************ */
+  public function drugsOwner()
+{
+return $this->hasManyThrough(Drug::class, Order::class);
+} 
+
 }

@@ -27,7 +27,7 @@ class Drug extends Model
     
 
     //******************** hidden ***************** */
-    protected $hidden = ['created_at','updated_at','pivot' ];
+   protected $hidden = ['created_at','updated_at','pivot' ];
     //******************************** */
 
     
@@ -46,6 +46,6 @@ class Drug extends Model
 
       //*************** rel bet Drug & cart ************************* */
       public function carts() {
-        return $this->belongsToMany(Cart::class,'cart_drugs','drug_id','cart_id','id','id');
+        return $this->belongsToMany(Cart::class);
     }
 }

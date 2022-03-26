@@ -72,6 +72,13 @@ Route::put('updateCart/{id}','App\Http\Controllers\CartController@updateCart');
 Route::get('getUserHasCart','App\Http\Controllers\CartController@getUserHasCart');
 Route::get('getUserHasNotCart','App\Http\Controllers\CartController@getUserHasNotCart');
 Route::get('getUserWithCart/{id}','App\Http\Controllers\CartController@getUserWithCart');
+
+//rel 
+Route::post('store','App\Http\Controllers\CartController@store');
+Route::put('update/{id}','App\Http\Controllers\CartController@update');
+Route::delete('destroy/{id}','App\Http\Controllers\CartController@destroy');
+
+Route::get('show/{id}','App\Http\Controllers\CartController@show');
 // **************************** tables CartDrug ******************************************************************
 Route::post('storeCartDrug','App\Http\Controllers\CartDrugController@store');
 Route::get('CartDrug/{id}','App\Http\Controllers\CartDrugController@show');
@@ -113,3 +120,9 @@ Route::post('storeDrugsInCart','App\Http\Controllers\RelationCartDrugController@
 Route::delete('removeDrugFromCart/{id}','App\Http\Controllers\RelationCartDrugController@removeDrugFromCart'); // not run 
 
 Route::delete('ddeleteeeeeelete/{id}','App\Http\Controllers\RelationCartDrugController@deleteeeee');
+
+
+
+// ****************************  test insert **********
+
+Route::post('testAgain','App\Http\Controllers\RelationCartDrugController@testAgain'); 

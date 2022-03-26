@@ -13,26 +13,53 @@ class RelationCartDrugController extends Controller
        return $cart = Cart::with('drugs')-> find($id);
        }
 
+//*********************** testAgain  insert done  *************************** */
+public function testAgain(Request $request)
+{ 
 
+  $cart = Cart::find($request -> cart_id);
+
+  if (!$cart){
+
+    return ["result"=>"store Drugs In Cart Not added"];
+  } 
+    else{ 
+  $cart->drugs()->syncWithoutDetaching([$request -> drug_id ,$request -> drug_quantity]);
+  // $cart -> drugs() -> syncWithoutDetaching ([$request -> id , $request -> drug_quantity]) ;  
+  return response()->json(['message'=>'success'],200);
+    }
+
+
+
+
+
+//************* error & try add drug_quantity  ****** */
+//   $cart = Cart::create($request->all());
+//   $drugs= collect($request->input('drugs',[]))->map(function($ing){
+// return ['drug_quantity' => $ing];
+//   });
+// //   return $drugs;
+//   $cart->drugs()->syncWithoutDetaching( $drugs);
+//   return response()->json(['message'=>'success'],200);
+
+}
 
          //**********************  insert   done run  ************************************* */
          public function storeDrugsInCart(Request $request)
          { 
-           
              $cart = Cart::create([
-             'user_id'  => '7'
+             'user_id'  => $request -> id
               ]);
 
           // $cart = Cart::find($id); 
 
-             if (!$cart){
-
-              return ["result"=>"store Drugs In Cart Not added"];
-            }
-              else{ 
-          $cart -> drugs() -> syncWithoutDetaching ([$request -> id]) ;
+            //  if (!$cart){
+            //   return ["result"=>"store Drugs In Cart Not added"];
+            // }
+              // else{ 
+          $cart -> drugs() -> syncWithoutDetaching ([$request -> drug_id , $request -> drug_quantity]) ;   
           return response()->json(['message'=>'success'],200);
-              } 
+              // } 
             } 
             //  $cart = Cart::find(20);               
          
@@ -156,10 +183,11 @@ public function deleteeeee(Request $request,$id)
 { 
   
  $cart = Cart::find($id); 
-// return $cart; 
+//return $cart; 
     if (!$cart){
 
-     return ["result"=>"store Drugs In Cart Not removed "];}
+     return ["result"=>"store Drugs In Cart Not removed "];
+    }
      else{ 
 
       $cart->drugs()->detach($request -> id);

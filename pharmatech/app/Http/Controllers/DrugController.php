@@ -28,7 +28,7 @@ class DrugController extends Controller
     return response()->json(['message'=>'Drug Not Found'],404);
   }
 
-  return response()->json($drug::find($id),200);
+  return response()->json($drug,200);
   }
 
 

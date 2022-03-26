@@ -88,7 +88,28 @@ public function drugs() {
 }
 
 public function cart() {
-    return $this->belongsTo(Cart::class);
+
+    // return $this->belongsTo(Cart::class);
+
+    return $this->hasOne(Cart::class,'user_id');    // ** check write or not 
+    
 }
+
+
+
+
+//*************** rel bet user & Order    1:m ************************* */
+public function  orders() {
+    return $this->hasMany(Order::class);
+  }
+  
+
+
+
+//******************  ************************ */
+  public function drugsOwner()
+{
+return $this->hasManyThrough(Drug::class, Order::class);
+} 
 
 }

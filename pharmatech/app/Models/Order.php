@@ -15,7 +15,30 @@ class Order extends Model
         'user_id'
     ];
 
-    public function  drugs() {
-        return $this->belongsToMany(Drug::class);
-    }
+    
+      //******************** hidden ***************** */
+      protected $hidden = ['created_at','updated_at','pivot' ];
+      //******************************** */
+
+
+    // public function  drugs() {
+    //     return $this->belongsToMany(Drug::class);
+    // }
+
+
+ //*************** rel bet Drug & order ************************* */
+ public function drugs() {
+    return $this->belongsToMany(Drug::class,'order_drugs','order_id','drug_id','id','id');
+}
+
+
+
+
+//******************  rel 1:m bet user & order ****************** */
+public function  user() {
+  return $this->belongsTo(User::class);
+}
+
+
+
 }

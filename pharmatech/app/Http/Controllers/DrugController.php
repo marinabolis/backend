@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Drug;
 use App\Models\Category;
+use App\Models\User;
 //for display image in drugs 2 lines
 // use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\DB;   // class DB --> joinDrugCategory fun 
@@ -80,35 +81,65 @@ $drug->description = $request-> description;
 $drug->image = $request-> image->hashName();
 $drug->production_date = $request-> production_date;
 $drug->expiry_date = $request-> expiry_date;
-$result = $drug->save();
-if ($result){
-  return ["result"=>"drug added"];
+// $drug->category_id = $request-> category_id;
+$drug->save();
+return response($drug,201);
 
-}else{
-  return ["result"=>"drug not  added"];
+
+
+// $result = $drug->save();
+// if ($result){
+// return ["result"=>"drug added"];
+
+// }else{
+// return ["result"=>"drug not added"];
+// }
+
 }
-
-
-   }
 
 
   
 
-    // $drug = Drug::create($request->all());
-    //  return response($drug,201);
-
+  //   $drug = Drug::create($request->all());
+  //    return response($drug,201);
+  // }
   
 
 // *********************updateDrug***************************
 
   public function updateDrug(Request $request,$id)
   {
-
     $drug = Drug::find($id);
     if(is_null($drug)){
       return response()->json(['message'=>'Drug Not Found'],404);
     }
-    $drug->update($request->all());
+    
+//     //****************************************************** */
+//     $drug->trade_name_ar = $request-> trade_name_ar;  // names of database  ( model/  drug page)
+//     $drug->trade_name_en = $request->trade_name_en;
+//     $drug->price         = $request->price;
+//     $drug->description = $request->description;
+  
+  
+//   //validation   image 
+//     if($request->hasfile('image'))
+//     {
+
+//    $destination='public/drugs/'.$drug->image;   // once any b update img h delete old img & set new img
+//     if(File::exists($destination)){
+//    File::delete($destination);
+//      }
+//    $file = $request->file('image');
+//    $filename = time().'.'.$file->getClientOriginalExtension();
+//    $file->move('public/drugs/',$filename);
+//    $drug->image =$filename;
+//     }
+//     $drug->production_date = $request->production_date;
+//     $drug->expiry_date = $request->expiry_date;
+//     $drug->update();
+// //************************************************ */
+
+     $drug->update($request->all());
     $drug->save();
 
     return response($drug,200);
@@ -144,6 +175,9 @@ public function productsByCategory($id)
 $productsByCategory = Category::where('id', $id)->with('drugs')->get();
 return $productsByCategory ;
   }  
+ 
+
+
 
 }
 

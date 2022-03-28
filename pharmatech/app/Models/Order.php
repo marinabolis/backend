@@ -12,12 +12,13 @@ class Order extends Model
         'total_cost',
         'shipping_address',
         'status',
-        'user_id'
+        'user_id',
+       
     ];
 
     
       //******************** hidden ***************** */
-      protected $hidden = ['created_at','updated_at','pivot' ];
+     
       //******************************** */
 
 
@@ -28,7 +29,7 @@ class Order extends Model
 
  //*************** rel bet Drug & order ************************* */
  public function drugs() {
-    return $this->belongsToMany(Drug::class,'order_drugs','order_id','drug_id','id','id');
+    return $this->belongsToMany(Drug::class,'order_drugs')->withPivot('drug_quantity');
 }
 
 
@@ -39,6 +40,18 @@ public function  user() {
   return $this->belongsTo(User::class);
 }
 
+// public function  drugs() {
+//   // return $this->belongsToMany(Drug::class, 'cart_drugs', 'drug_id', 'cart_id','id','id');
 
 
+//   // return $this->belongsToMany(Drug::class, 'cart_drugs', 'cart_id','drug_id','id','id');
+
+
+// //, 'cart_id','drug_id','id','id'
+
+//  //******try add drug_quantity*****
+//   return $this->belongsToMany(Drug::class, 'cart_drugs')->withPivot('drug_quantity');
+// }
+
+// }
 }

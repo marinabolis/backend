@@ -105,13 +105,13 @@ class OrderController extends Controller
         // }
 
         $order = Order::create([
-            'user_id' => $request->user()->id,
-            'shipping_address' => $request->user()->city,
+            'user_id' => $request->id,
+            'shipping_address' => $request->city,
         ]);
 
         $order->save();
 
-        foreach ($request->drugs as $drug) {
+        foreach ($request->drugs as $drug) {  
             $selectedDrug = Drug::where('id', $drug['id'])->first();
             if ($selectedDrug) {
                 $count = $drug['pivot']['drug_quantity'];

@@ -20,8 +20,8 @@ return new class extends Migration
             $table->float('price', 8, 2);
             $table->string('description');
             $table->string('image');
-            $table->date('production_date');
-            $table->date('expiry_date');
+            $table->date('production_date')->nullable();
+            $table->date('expiry_date')->nullable();
             $table->unsignedBigInteger('category_id')->nullable();
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->timestamps();

@@ -131,13 +131,10 @@ class CartController extends Controller
    */
   public function update(Request $request, $id)
   {
-<<<<<<< HEAD
 
-    $cart = Cart::with('drugs', 'user')->where('user_id', $request->user()->id)->first();
-=======
-   
+
     $cart = Cart::with('drugs', 'user')->where('user_id', $request->id)->first();
->>>>>>> e70895c7155051bd3b968e07f1bea6a17dbacc2a
+
     // dd( $cart);
     $cart->drugs()->detach();
 

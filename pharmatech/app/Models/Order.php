@@ -17,7 +17,7 @@ class Order extends Model
 
     
       //******************** hidden ***************** */
-      protected $hidden = ['created_at','updated_at','pivot' ];
+      // protected $hidden = ['created_at','updated_at','pivot' ];
       //******************************** */
 
 

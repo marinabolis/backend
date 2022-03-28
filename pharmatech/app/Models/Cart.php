@@ -30,6 +30,6 @@ class Cart extends Model
 //, 'cart_id','drug_id','id','id'
 
        //******try add drug_quantity*****
-        return $this->belongsToMany(Drug::class, 'cart_drugs')->withPivot(['drug_quantity']);
+        return $this->belongsToMany(Drug::class, 'cart_drugs')->withPivot('drug_quantity');
 }
 }

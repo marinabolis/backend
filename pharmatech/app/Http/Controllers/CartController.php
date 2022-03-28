@@ -103,7 +103,8 @@ class CartController extends Controller
   {
     // dd( $request->user());
     $cart = Cart::create([
-      'user_id' => $request->user()->id   // 
+      // 'user_id' => $request->user()->id  
+      'user_id' => $request->id
     ]);
     $cart->save();
 
@@ -132,7 +133,7 @@ class CartController extends Controller
   public function update(Request $request, $id)
   {
    
-    $cart = Cart::with('drugs', 'user')->where('user_id', $request->user()->id)->first();
+    $cart = Cart::with('drugs', 'user')->where('user_id', $request->id)->first();
     // dd( $cart);
     $cart->drugs()->detach();
    

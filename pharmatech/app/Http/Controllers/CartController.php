@@ -95,9 +95,8 @@ class CartController extends Controller
   }
 
 
-
-  //********************************  cart user grug ******************8 */
-
+  //******************************** rel  cart & user  & drug ******************8 */
+  //******************************** fun store ******************8 */
 
   public function store(Request $request)
   {
@@ -131,11 +130,11 @@ class CartController extends Controller
    */
   public function update(Request $request, $id)
   {
-   
+
     $cart = Cart::with('drugs', 'user')->where('user_id', $request->user()->id)->first();
     // dd( $cart);
     $cart->drugs()->detach();
-   
+
     foreach ($request->cartItem as $drug) {
       $selectedDrug = Drug::where('id', $drug['id'])->first();
       if ($selectedDrug) {
@@ -148,13 +147,12 @@ class CartController extends Controller
     $cart->save();
 
     return Cart::where('id', $cart->id)->with('drugs')->first();
-    
   }
   //*********************** getDrugsForCartsIds (show) *************************** */
-  public function getDrugsForCartsIds($id)
-  {
-    return $cart = Cart::with('drugs')->find($id);
-  }
+  // public function getDrugsForCartsIds($id)
+  // {
+  //   return $cart = Cart::with('drugs')->find($id);
+  // }
 
   // *************************** delete  done ************************************
 
@@ -173,30 +171,30 @@ class CartController extends Controller
   //   }
   // }
 
-
+  //************************* destroy ************************************* */
   /**
-* Remove the specified resource from storage.
-*
-* @param int $id
-* @return \Illuminate\Http\Response
-*/
-public function destroy($id)
-{
-return Cart::where('user_id', $id)->delete();
-}
+   * Remove the specified resource from storage.
+   *
+   * @param int $id
+   * @return \Illuminate\Http\Response
+   */
+  public function destroy($id)
+  {
+    return Cart::where('user_id', $id)->delete();
+  }
+  //***************************** show ************************************ */
+  /**
+   * Display the specified resource.
+   *
+   * @param int $id
+   * @return \Illuminate\Http\Response
+   */
+  public function show($id)
+  {
+    $cart = Cart::with('drugs')->where('user_id', $id)->first();
+    // $product = Cart::with('products')->where('user_id', $request->user()->id)->get();
+    // $cart = Cart::with('products')->where('user_id', $request->user()->id)->find($id);
 
-/**
-* Display the specified resource.
-*
-* @param int $id
-* @return \Illuminate\Http\Response
-*/
-public function show( $id)
-{
-$cart = Cart::with('drugs')->where('user_id', $id)->first();
-// $product = Cart::with('products')->where('user_id', $request->user()->id)->get();
-// $cart = Cart::with('products')->where('user_id', $request->user()->id)->find($id);
-
-return response()->json($cart, 200);
-} 
+    return response()->json($cart, 200);
+  }
 }

@@ -118,6 +118,7 @@ class UserController extends Controller
     //    if email & pass successfully
         $user = auth()->user();
         $data['token']=auth()->claims([
+            'city' => $user->city,               // 
             'user_id' => $user-> id,
             'email' => $user-> email,
             'role'=>$user-> role

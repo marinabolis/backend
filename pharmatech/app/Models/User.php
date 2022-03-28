@@ -77,15 +77,12 @@ class User  extends Authenticatable implements JWTSubject
         return [];
     }
 
-
-
-
-
 // relation between tables
 
-public function drugs() {
-    return $this->belongsToMany(Drug::class);
-}
+// m:m user & drug 
+// public function drugs() {
+//     return $this->belongsToMany(Drug::class);
+// }
 
 public function cart() {
 
@@ -94,19 +91,12 @@ public function cart() {
     return $this->hasOne(Cart::class,'user_id');    // ** check write or not 
     
 }
-
-
-
-
 //*************** rel bet user & Order    1:m ************************* */
 public function  orders() {
     return $this->hasMany(Order::class);
   }
-  
 
-
-
-//******************  ************************ */
+//****************** rel bet (user Drug Order)    ************************ */
   public function drugsOwner()
 {
 return $this->hasManyThrough(Drug::class, Order::class);

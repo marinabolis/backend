@@ -10,7 +10,8 @@ class OrderDrug extends Model
     use HasFactory;
     protected $fillable = [
         'order_id',
-        'drug_id'
+        'drug_id',
+        'drug_quantity'
     ];
 
 

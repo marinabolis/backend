@@ -73,6 +73,7 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
+        //dd( $request->user());
         $total_cost = 0;
 
         // if ($request->user()->role == 'admin') {
@@ -105,13 +106,13 @@ class OrderController extends Controller
         // }
 
         $order = Order::create([
-            'user_id' => $request->user()->id,
-            'shipping_address' => $request->user()->city,
+            'user_id' => $request->id,
+            'shipping_address' => $request->city,
         ]);
 
         $order->save();
-
-        foreach ($request->drugs as $drug) {
+       //return $order;
+        foreach ($request->drugs as $drug) {  
             $selectedDrug = Drug::where('id', $drug['id'])->first();
             if ($selectedDrug) {
                 $count = $drug['pivot']['drug_quantity'];

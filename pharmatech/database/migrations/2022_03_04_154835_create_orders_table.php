@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->float('total_cost', 8, 2);
-            $table->string('status');
+            $table->enum('status', ['shipped','pending'])->default('pending');
             $table->string('shipping_address');
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

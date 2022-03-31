@@ -27,12 +27,15 @@ Route::post('/login' , [UserController::class , 'login']);
 // **************************** table drugs ***************************************
 Route::get('drugs','App\Http\Controllers\DrugController@getDrug');
 Route::get('drug/{id}','App\Http\Controllers\DrugController@getDrugById');
-Route::post('addDrug','App\Http\Controllers\DrugController@addDrug');
+ Route::post('addDrug','App\Http\Controllers\DrugController@addDrug');
+//Route::post('addDrug','App\Http\Controllers\DrugController@storeTesting');
+//Route::post('addDrug','App\Http\Controllers\DrugController@testingTesting');
+
 Route::put('updateDrug/{id}','App\Http\Controllers\DrugController@updateDrug');
 Route::delete('deleteDrug/{id}','App\Http\Controllers\DrugController@deleteDrug');
 
 Route::get('productsByCategory/{id}','App\Http\Controllers\DrugController@productsByCategory');
-
+//Route::post('storeTesting','App\Http\Controllers\DrugController@storeTesting');
 // **************************** table orders ***************************************
 Route::get('orders','App\Http\Controllers\OrderController@getOrder');
 Route::get('orders/{id}','App\Http\Controllers\OrderController@getOrderById');

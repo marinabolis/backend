@@ -45,45 +45,32 @@ class DrugController extends Controller
 //   $drug->description ;
   
 // //validatin image 
-//    if($request->hasfile('image')){
-//      $completeFileName = $request->file('image')->getClientOriginalName();
-//      $fileNameOnly = pathinfo($completeFileName,PATHINFO_FILENAME);
-//      $extenshion = $request->file('image')->getClientOriginalExtension();
-//      $compPic = str_replace('', '_',$fileNameOnly).'_'.rand() . '_'.time(). '.'.$extenshion; //"concor_1213153442_1647133567.jpg"
-//          $path = $request->file('image')->storeAs('public/drugs', $compPic);
-//     // dd($path);  
-//       $drug->image = $compPic;
-//    }
-
-//    $drug->production_date ;
-//   $drug->expiry_date ; 
-//   $drug->save();
-//      $drug = Drug::create($request->all());
-//      return response($drug,201);
-
-
-
-// $file=$request->file('file');
-// $uploadPath ="public/drugs";
-// $originalImage=$file->getClientOriginalName();
-// $file->move($uploadPath,$originalImage);
-// $drugModel= new Drug();
-// $data=$drugModel->addDrug($request->all());
-
-
-
-$uploadFiles =$request->image->store('public/drugs');
 $drug= new Drug;
+if($request->hasFile('image')) { 
+
+  $compliteFileName = $request->file('image')->getClientOriginalName();
+  $filaNameOnly = pathinfo($compliteFileName , PATHINFO_FILENAME);
+  $extension = $request->file('image')->getClientOriginalExtension();
+  $comPic = str_replace(' ' , '_' , $filaNameOnly).'-'.rand() . '_'.time(). '.'.$extension;
+  $path = $request->file('image')->storeAs('public/drugs' , $comPic);
+  $drug->image=$comPic;
+}
+
+// $uploadFiles =$request->image->store('public/storage/drugs');
+$category = $request->category;
 $drug->trade_name_ar = $request-> trade_name_ar;
 $drug->trade_name_en = $request-> trade_name_en;
 $drug->price = $request-> price;
 $drug->description = $request-> description;
-$drug->image = $request-> image->hashName();
+// $drug->image = $request-> image->hashName();
 $drug->production_date = $request-> production_date;
 $drug->expiry_date = $request-> expiry_date;
-// $drug->category_id = $request-> category_id;
-$drug->save();
-return response($drug,201);
+$drug->category_id = $request-> category_id;
+if($drug->save()){
+  return response()->json($drug, 201);
+} else {
+return  ['status' => false, 'message' => 'image could not be saved'];
+}
 
 
 

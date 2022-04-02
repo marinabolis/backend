@@ -16,53 +16,43 @@ class UserSeeder extends Seeder
     {
         $users = [
             [
-            'name' => 'Mahmoud',
+            'name' => 'Mirette',
            
-            'email' => 'mahmoud.muhamed94@gmail.com',
+            'email' => 'miretteFayz@gmail.com',
             'password' => bcrypt('123456'),
-            'city' => 'cairo',
+            'city' => 'alex',
             'street' => 'khattab',
             
             'role' => 'admin',
 
         ],
         [
-            'name' => 'Mohamed',
+            'name' => 'Marina',
          
-            'email' => 'mohamedsaad17878@gmail.com',
+            'email' => 'MarinaBolis@gmail.com',
             'password' => bcrypt('123456'),
-            'city' => 'alex',
-            'street' => 'waleed',
+            'city' => 'cairo',
+            'street' => 'shekolany',
             
             'role' => 'admin',
         ],
         [
-            'name' => 'Mahmoud',
+            'name' => 'Yossef',
          
-            'email' => 'mahmodsaadlebda@gmail.com',
+            'email' => 'yossef@gmail.com',
             'password' => bcrypt('123456'),
-            'city' => 'tanta',
+            'city' => 'alex',
             'street' => 'ezz',
             
             'role' => 'admin',
         ],
         [
-            'name' => 'Basma',
+            'name' => 'Esraa',
            
-            'email' => 'basmafarouk05@gmail.com',
+            'email' => 'esraa@gmail.com',
             'password' => bcrypt('123456'),
-            'city' => 'alex',
+            'city' => 'fayoom',
             'street' => 'asfra',
-            
-            'role' => 'admin',
-        ],
-        [
-            'name' => 'Shrok',
-          
-            'email' => 'shrokayman99@gmail.com',
-            'password' => bcrypt('123456'),
-            'city' => 'cairo',
-            'street' => 'manil',
             
             'role' => 'admin',
         ],

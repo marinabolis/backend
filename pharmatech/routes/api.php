@@ -31,7 +31,14 @@ Route::get('drug/{id}','App\Http\Controllers\DrugController@getDrugById');
 //Route::post('addDrug','App\Http\Controllers\DrugController@storeTesting');
 //Route::post('addDrug','App\Http\Controllers\DrugController@testingTesting');
 
-Route::put('updateDrug/{id}','App\Http\Controllers\DrugController@updateDrug');
+
+
+//Route::put('updateDrug/{id}','App\Http\Controllers\DrugController@updateDrug');
+// Route::put('updateDrug/{id}','App\Http\Controllers\DrugController@uploadProfilePhoto');
+
+
+ Route::put('updateDrug/{id}','App\Http\Controllers\DrugController@updateeee');
+//Route::put('updateDrug/{id}','App\Http\Controllers\DrugController@mmm');
 Route::delete('deleteDrug/{id}','App\Http\Controllers\DrugController@deleteDrug');
 
 Route::get('productsByCategory/{id}','App\Http\Controllers\DrugController@productsByCategory');
@@ -59,10 +66,10 @@ Route::put('updateCategory/{id}','Apparoller@updateCategory');
 Route::delete('deleteCategory/{id}','App\Http\Controllers\CategoryController@deleteCategory');
 
 // **************************** tables UserDrug ******************************************************************
-Route::post('storeUserDrug','App\Http\Controllers\UserDrugController@store');
-Route::get('userdrug/{id}','App\Http\Controllers\UserDrugController@show');
-Route::put('updateUserDrug/{id}','App\Http\Controllers\UserDrugController@updateUserDrug');
-Route::delete('deleteUserDrug/{id}','App\Http\Controllers\UserDrugController@deleteUserDrug');
+// Route::post('storeUserDrug','App\Http\Controllers\UserDrugController@store');
+// Route::get('userdrug/{id}','App\Http\Controllers\UserDrugController@show');
+// Route::put('updateUserDrug/{id}','App\Http\Controllers\UserDrugController@updateUserDrug');
+// Route::delete('deleteUserDrug/{id}','App\Http\Controllers\UserDrugController@deleteUserDrug');
 
 // **************************** tables Cart ******************************************************************
 Route::post('storeUserCart','App\Http\Controllers\CartController@storeCart');
@@ -72,9 +79,9 @@ Route::put('updateCart/{id}','App\Http\Controllers\CartController@updateCart');
 
 
 // test rel 
-Route::get('getUserHasCart','App\Http\Controllers\CartController@getUserHasCart');
-Route::get('getUserHasNotCart','App\Http\Controllers\CartController@getUserHasNotCart');
-Route::get('getUserWithCart/{id}','App\Http\Controllers\CartController@getUserWithCart');
+// Route::get('getUserHasCart','App\Http\Controllers\CartController@getUserHasCart');
+// Route::get('getUserHasNotCart','App\Http\Controllers\CartController@getUserHasNotCart');
+// Route::get('getUserWithCart/{id}','App\Http\Controllers\CartController@getUserWithCart');
 
 //rel bet user & cart & drug 
 Route::post('store','App\Http\Controllers\CartController@store');
@@ -82,16 +89,16 @@ Route::put('update/{id}','App\Http\Controllers\CartController@update');
 Route::delete('destroy/{id}','App\Http\Controllers\CartController@destroy');
 Route::get('show/{id}','App\Http\Controllers\CartController@show');
 // **************************** tables CartDrug ******************************************************************
-Route::post('storeCartDrug','App\Http\Controllers\CartDrugController@store');
-Route::get('CartDrug/{id}','App\Http\Controllers\CartDrugController@show');
-Route::delete('deleteCartDrug/{id}','App\Http\Controllers\CartDrugController@deleteCartDrug');
-Route::put('updateCartDrug/{id}','App\Http\Controllers\CartDrugController@updateCartDrug');
+// Route::post('storeCartDrug','App\Http\Controllers\CartDrugController@store');
+// Route::get('CartDrug/{id}','App\Http\Controllers\CartDrugController@show');
+// Route::delete('deleteCartDrug/{id}','App\Http\Controllers\CartDrugController@deleteCartDrug');
+// Route::put('updateCartDrug/{id}','App\Http\Controllers\CartDrugController@updateCartDrug');
 // **************************** tables OrderDrug ******************************************************************
 
-Route::post('storeOrderDrug','App\Http\Controllers\OrderDrugController@storeOrderDrug');
-Route::get('orderDrug/{id}','App\Http\Controllers\OrderDrugController@showOrderDrug');
-Route::delete('deleteOrderDrug/{id}','App\Http\Controllers\OrderDrugController@deleteOrderDrug');
-Route::put('updateOrderDrug/{id}','App\Http\Controllers\OrderDrugController@updateOrderDrug');
+// Route::post('storeOrderDrug','App\Http\Controllers\OrderDrugController@storeOrderDrug');
+// Route::get('orderDrug/{id}','App\Http\Controllers\OrderDrugController@showOrderDrug');
+// Route::delete('deleteOrderDrug/{id}','App\Http\Controllers\OrderDrugController@deleteOrderDrug');
+// Route::put('updateOrderDrug/{id}','App\Http\Controllers\OrderDrugController@updateOrderDrug');
 
 
 
@@ -117,14 +124,14 @@ Route::put('updateOrderDrug/{id}','App\Http\Controllers\OrderDrugController@upda
 
 // **************************** rel bet Cart & Drug ************************************************
 
-Route::get('getDrugsForCartsIds/{id}','App\Http\Controllers\RelationCartDrugController@getDrugsForCartsIds');
-Route::post('storeDrugsInCart','App\Http\Controllers\RelationCartDrugController@storeDrugsInCart'); 
-Route::delete('removeDrugFromCart/{id}','App\Http\Controllers\RelationCartDrugController@removeDrugFromCart'); // not run 
+// Route::get('getDrugsForCartsIds/{id}','App\Http\Controllers\RelationCartDrugController@getDrugsForCartsIds');
+// Route::post('storeDrugsInCart','App\Http\Controllers\RelationCartDrugController@storeDrugsInCart'); 
+// Route::delete('removeDrugFromCart/{id}','App\Http\Controllers\RelationCartDrugController@removeDrugFromCart'); // not run 
 
-Route::delete('ddeleteeeeeelete/{id}','App\Http\Controllers\RelationCartDrugController@deleteeeee');
+// Route::delete('ddeleteeeeeelete/{id}','App\Http\Controllers\RelationCartDrugController@deleteeeee');
 
 
 
-// ****************************  test insert **********
+// // ****************************  test insert **********
 
-Route::post('testAgain','App\Http\Controllers\RelationCartDrugController@testAgain'); 
+// Route::post('testAgain','App\Http\Controllers\RelationCartDrugController@testAgain'); 

@@ -14,16 +14,11 @@ class CategorySeeder extends Seeder
     public function run()
     {
         $categories = [
-            ['name' => 'cardio'],
-            ['name' => 'anti_biotic'],
-            ['name' => 'anti_diabetic'],
-            ['name' => 'anti_hypertensive'],
-            ['name' => 'lungs'],
-            ['name' => 'hearts'],
-            ['name' => 'legs'],
-            ['name' => 'notthing'],
-            ['name' => 'ear'],
-            ['name' => 'nose'],
+            ['name' => 'anti-biotics'],
+            ['name' => 'anti-hypertensive'],
+            ['name' => 'anti-diabetic'],
+            ['name' => 'skin care '],
+            ['name' => 'cardio_drug']
         ];
 
         DB::table('categories')->insert($categories);

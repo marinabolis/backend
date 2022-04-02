@@ -8,6 +8,8 @@ use App\Models\Category;
 use App\Models\User;
 use Illuminate\Http\Validator;
 use Illuminate\Http\Response;
+
+use Illuminate\Support\Facades\File;
 //for display image in drugs 2 lines
 // use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\DB;   // class DB --> joinDrugCategory fun 
@@ -51,13 +53,11 @@ class DrugController extends Controller
       $drug->image = $comPic;
     }
 
-    // $uploadFiles =$request->image->store('public/storage/drugs');
     $category = $request->category;
     $drug->trade_name_ar = $request->trade_name_ar;
     $drug->trade_name_en = $request->trade_name_en;
     $drug->price = $request->price;
     $drug->description = $request->description;
-    // $drug->image = $request-> image->hashName();
     $drug->production_date = $request->production_date;
     $drug->expiry_date = $request->expiry_date;
     $drug->category_id = $request->category_id;
@@ -240,4 +240,170 @@ class DrugController extends Controller
     $drug->save();
     return response($drug, 201);
   }
+
+
+  //*************************************  testing update fun ************************************** */
+  public function uploadProfilePhoto(Request $request,$id) {  
+    // $drug = new Drug;
+    $drug = Drug::find($id);
+
+   
+ 
+    // dd($drug);
+    if (is_null($drug)) {
+      return response()->json(['message' => 'Drug Not Found'], 404);
+    }
+    // if ($request->hasFile('image'))
+    // {
+    //   $drug = new Drug;
+    //     $file      = $request->file('image');
+    //     $filename  = $file->getClientOriginalName();
+    //     $extension = $file->getClientOriginalExtension();
+    //     // $picture   = date('His').'-'.$filename;
+    //     $picture =  $request['code'].'.jpg';
+    //     $file->move(public_path('/drugs'), $picture);
+    //     // return response()->json(["message" => "Image Uploaded Succesfully"]);
+    //     $drug->image = $file;
+    // }
+    // else
+    // {
+    //     return response()->json(["message" => "Select image first."]);
+    // }
+
+    // $drug = new Drug;
+    if ($request->hasFile('image')) {
+      $compliteFileName = $request->file('image')->getClientOriginalName();
+      $filaNameOnly = pathinfo($compliteFileName, PATHINFO_FILENAME);
+      $extension = $request->file('image')->getClientOriginalExtension();
+      $comPic = str_replace(' ', '_', $filaNameOnly) . '-' . rand() . '_' . time() . '.' . $extension;
+      $path = $request->file('image')->storeAs('public/drugs', $comPic);
+      $drug->image = $comPic;
+    }
+    $drug->trade_name_ar = $request->trade_name_ar;
+    $drug->trade_name_en = $request->trade_name_en;
+    $drug->price = $request->price;
+    $drug->description = $request->description;
+    $drug->production_date = $request->production_date;
+    $drug->expiry_date = $request->expiry_date;
+    $drug->category_id = $request->category_id;
+    $drug->update($request->all());
+    if ($drug->save()) {
+      return response()->json($drug, 201);
+    } else {
+      return  ['status' => false, 'message' => 'image could not be saved'];
+    }
+
+
+
+    // $drug->update($request->all());
+
+    // $drug->update($request->all());
+    // $drug->save();
+
+    // return response($drug, 200);
+  }
+
+
+  // ***************************************************************************************
+
+  public function updateeee(Request $request,$id)     
+  { $drug = Drug::find($id);
+   
+     // dd($drug);
+    //validation   image 
+      if($request->hasfile('image'))
+      { 
+
+     $destination='public/drugs/'.$drug->image;   // once any b update img h delete old img & set new img
+      if(File::exists($destination)){
+      
+     File::delete($destination);
+       }
+     $file = $request->file('image');
+     $filename = time().'.'.$file->getClientOriginalExtension();
+     $file->move('public/drugs/',$filename);
+     $drug->image =$filename;
+      }
+  
+    $drug->trade_name_ar = $request->trade_name_ar;
+    $drug->trade_name_en = $request->trade_name_en;
+    $drug->price = $request->price;
+    $drug->description = $request->description;
+    $drug->production_date = $request->production_date;
+    $drug->expiry_date = $request->expiry_date;
+    $drug->category_id = $request->category_id;
+      if ( $drug->update()) {
+        return response()->json($drug, 201);
+      } else {
+        return  ['status' => false, 'message' => 'image could not be saved'];
+      }
+  }
+
+  //**********************************  test again ************* */
+  // public function mmm(Request $request,$id)
+  // {
+
+  //   // //validatin image 
+  //   $drug = Drug::find($id);
+  //   //dd($drug);
+  //   // $drug = new Drug;
+  //   if ($request->hasFile('image')) {
+  //     $compliteFileName = $request->file('image')->getClientOriginalName();
+  //     $filaNameOnly = pathinfo($compliteFileName, PATHINFO_FILENAME);
+  //     $extension = $request->file('image')->getClientOriginalExtension();
+  //     $comPic = str_replace(' ', '_', $filaNameOnly) . '-' . rand() . '_' . time() . '.' . $extension;
+  //     $path = $request->file('image')->storeAs('public/drugs', $comPic);
+  //     $drug->image = $comPic;
+  //   }
+
+  //   // $category = $request->category;
+  //   $drug->trade_name_ar = $request->trade_name_ar;
+  //   $drug->trade_name_en = $request->trade_name_en;
+  //   $drug->price = $request->price;
+  //   $drug->description = $request->description;
+  //   $drug->production_date = $request->production_date;
+  //   $drug->expiry_date = $request->expiry_date;
+  //   $drug->category_id = $request->category_id;
+
+  //    $drug->update($request->all());
+  //   if ($drug->save()) {
+  //     return response()->json($drug, 201);
+  //   } else {
+  //     return  ['status' => false, 'message' => 'image could not be saved'];
+  //   }
+  // }
+
+
+  public function mmm(Request $request , $id)     
+  {
+    
+      $drug = Drug::find($id);
+      if ($request->hasFile('image'))
+        {
+            $file      = $request->file('image');
+            $filename  = $file->getClientOriginalName();
+            $extension = $file->getClientOriginalExtension();
+            // $picture   = date('His').'-'.$filename;
+            $picture =  $request['code'].'.jpg';
+            $file->move(public_path('public/drugs'), $picture);
+            return response()->json(["message" => "Image Uploaded Succesfully"]);
+        }
+           $drug->trade_name_ar = $request->trade_name_ar;
+    $drug->trade_name_en = $request->trade_name_en;
+    $drug->price = $request->price;
+    $drug->description = $request->description;
+    $drug->production_date = $request->production_date;
+    $drug->expiry_date = $request->expiry_date;
+    $drug->category_id = $request->category_id;
+
+      //  $drug->update();
+         if ( $drug->update()) {
+      return response()->json($drug, 201);
+    } else {
+      return  ['status' => false, 'message' => 'image could not be saved'];
+    }
+  }
+
+
+
 }

@@ -40,7 +40,7 @@ class Drug extends Model
 
     //*************** rel bet Drug & order ************************* */
     public function orders() {
-        return $this->belongsToMany(Order::class,'order_drugs','drug_id','order_id','id','id');
+        return $this->belongsToMany(Order::class,'drug_order','drug_id','order_id','id','id');
     }
 
 

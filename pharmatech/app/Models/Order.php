@@ -29,7 +29,7 @@ class Order extends Model
 
  //*************** rel bet Drug & order ************************* */
  public function drugs() {
-    return $this->belongsToMany(Drug::class,'order_drugs')->withPivot('drug_quantity');
+    return $this->belongsToMany(Drug::class,'drug_order')->withPivot('drug_quantity');
 }
 
 

@@ -141,14 +141,16 @@ class UserController extends Controller
     }
 
 // *************** get specific user detail **********************
-    public function getUserById($id)
+    public function getUserById(Request $request, $id)
     {
+   
     $user = User::find($id);
+  
     if(is_null($user)){
       return response()->json(['message'=>'User Not Found'],404);
     }
   
-    return response()->json($user::find($id),200);
+    return response()->json($user,200);
     }
 
 // *********************addUser***************************
@@ -172,7 +174,42 @@ public function updateUser(Request $request,$id)
     return response()->json(['message'=>'User Not Found'],404);
   }
   $user->update($request->all());
+  $user->password = bcrypt($request->password);
+  $user->save();
   return response($user,200);
+ 
+// try{
+//     $user = auth()->userOrFail();
+// }catch(UserNotDefinedException $e){
+//     return response()->json(['error' => $e->getMessage()]);
+// }
+// if($user->role =="admin"){
+//     $user = User::find($id);
+//     if($user){
+//         $user->update($request->all());
+//         if($request->password){
+//             $user->password = bcrypt($request->password);
+//             $user->save();
+//         }
+
+//         $response['status'] = 1;
+//         $response['message'] = 'Data updated successfully';
+//         $response['code'] = 200;
+//     }
+//     else{
+//         $response['status'] = 0;
+//         $response['message'] = 'User not found';
+//         $response['code'] = 404;
+//     }
+// }
+// else{
+//     return "You Are Not Admin";
+// }
+// return response()->json($response);
+
+
+
+
 }
 
 

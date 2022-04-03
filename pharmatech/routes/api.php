@@ -53,7 +53,9 @@ Route::delete('deleteOrder/{id}','App\Http\Controllers\OrderController@deleteOrd
 
 // **************************** table users ***************************************
 Route::get('users','App\Http\Controllers\UserController@getUser');
-Route::get('users/{id}','App\Http\Controllers\UserController@getUserById');
+// Route::get('users/{id}','App\Http\Controllers\UserController@getUserById');
+Route::get('users/{id}', [UserController::class, "getUserById"]);
+
 Route::post('addUser','App\Http\Controllers\UserController@addUser');
 Route::put('updateUser/{id}','App\Http\Controllers\UserController@updateUser');
 Route::delete('deleteUser/{id}','App\Http\Controllers\UserController@deleteUser');

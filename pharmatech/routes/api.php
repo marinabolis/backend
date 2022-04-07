@@ -57,7 +57,8 @@ Route::delete('deleteUser/{id}','App\Http\Controllers\UserController@deleteUser'
 Route::get('categories','App\Http\Controllers\CategoryController@getCategory');
 Route::get('categories/{id}','App\Http\Controllers\CategoryController@getCategoryById');
 Route::post('addCategory','App\Http\Controllers\CategoryController@addCategory');
-Route::put('updateCategory/{id}','Apparoller@updateCategory');
+// Route::put('updateCategory/{id}','Apparoller@updateCategory');
+Route::put('updateCategory/{id}','App\Http\Controllers\CategoryController@updateCategory');
 Route::delete('deleteCategory/{id}','App\Http\Controllers\CategoryController@deleteCategory');
 
 

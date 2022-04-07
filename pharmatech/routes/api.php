@@ -30,7 +30,7 @@ Route::get('drug/{id}','App\Http\Controllers\DrugController@getDrugById');
 
 
 
- Route::put('updateDrug/{id}','App\Http\Controllers\DrugController@updateeee');
+ Route::put('updateDrug/{id}','App\Http\Controllers\DrugController@updateDrug');
 
 Route::delete('deleteDrug/{id}','App\Http\Controllers\DrugController@deleteDrug');
 

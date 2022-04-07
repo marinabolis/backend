@@ -122,14 +122,14 @@ class DrugController extends Controller
     $drug->trade_name_en = $request->trade_name_en;
     $drug->price = $request->price;
     $drug->description = $request->description;
-  
+    // $drug->image = $request-> image->getClientOriginalName();
     $image = $request->file('image');
-   
+    // dd($request->file('image'));
     $drug->image = $image->getClientOriginalName();
-    
+    //$drug->image = $request->file('image')->getClientOriginalName();
     $drug->production_date = $request->production_date;
     $drug->expiry_date = $request->expiry_date;
-
+    // $drug->category_id = $request-> category_id;
     $drug->save();
     return response($drug, 201);
 
@@ -173,7 +173,7 @@ class DrugController extends Controller
 
   //*************************************  testing update fun ************************************** */
   public function uploadProfilePhoto(Request $request,$id) {  
-
+    // $drug = new Drug;
     $drug = Drug::find($id);
 
    
@@ -207,7 +207,12 @@ class DrugController extends Controller
 
 
 
- 
+    // $drug->update($request->all());
+
+    // $drug->update($request->all());
+    // $drug->save();
+
+    // return response($drug, 200);
   }
 
 
@@ -216,7 +221,7 @@ class DrugController extends Controller
   public function updateeee(Request $request,$id)     
   { $drug = Drug::find($id);
    
-    
+     // dd($drug);
     //validation   image 
       if($request->hasfile('image'))
       { 
@@ -246,7 +251,39 @@ class DrugController extends Controller
       }
   }
 
+  //**********************************  test again ************* */
+  // public function mmm(Request $request,$id)
+  // {
 
+  //   // //validatin image 
+  //   $drug = Drug::find($id);
+  //   //dd($drug);
+  //   // $drug = new Drug;
+  //   if ($request->hasFile('image')) {
+  //     $compliteFileName = $request->file('image')->getClientOriginalName();
+  //     $filaNameOnly = pathinfo($compliteFileName, PATHINFO_FILENAME);
+  //     $extension = $request->file('image')->getClientOriginalExtension();
+  //     $comPic = str_replace(' ', '_', $filaNameOnly) . '-' . rand() . '_' . time() . '.' . $extension;
+  //     $path = $request->file('image')->storeAs('public/drugs', $comPic);
+  //     $drug->image = $comPic;
+  //   }
+
+  //   // $category = $request->category;
+  //   $drug->trade_name_ar = $request->trade_name_ar;
+  //   $drug->trade_name_en = $request->trade_name_en;
+  //   $drug->price = $request->price;
+  //   $drug->description = $request->description;
+  //   $drug->production_date = $request->production_date;
+  //   $drug->expiry_date = $request->expiry_date;
+  //   $drug->category_id = $request->category_id;
+
+  //    $drug->update($request->all());
+  //   if ($drug->save()) {
+  //     return response()->json($drug, 201);
+  //   } else {
+  //     return  ['status' => false, 'message' => 'image could not be saved'];
+  //   }
+  // }
 
 
   public function mmm(Request $request , $id)     
@@ -258,7 +295,7 @@ class DrugController extends Controller
             $file      = $request->file('image');
             $filename  = $file->getClientOriginalName();
             $extension = $file->getClientOriginalExtension();
-         
+            // $picture   = date('His').'-'.$filename;
             $picture =  $request['code'].'.jpg';
             $file->move(public_path('public/drugs'), $picture);
             return response()->json(["message" => "Image Uploaded Succesfully"]);
@@ -271,7 +308,7 @@ class DrugController extends Controller
     $drug->expiry_date = $request->expiry_date;
     $drug->category_id = $request->category_id;
 
- 
+      //  $drug->update();
          if ( $drug->update()) {
       return response()->json($drug, 201);
     } else {

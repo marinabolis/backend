@@ -6,9 +6,6 @@ use Illuminate\Support\Facedes\Hash;
 use App\Models\User;
 use Illuminate\Support\Facedes\Auth;
 
-// use Tymon\JWTAuth\Facedes\JWTAuth;
-// use Tymon\JWTAuth\Exceptions\JWTExceptions;
-
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Tymon\JWTAuth\Exceptions\TokenInvalidException;
 use Tymon\JWTAuth\Exceptions\UserNotDefinedException;
@@ -25,34 +22,6 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
-
-
-     //
-     
-    // public function index(Request $request, Closure $next)
-    // {
-        
-    //         if(Auth::check()){
-    //             if(Auth::user()->role == 'admin')  //1=admin 
-    //             {
-    //             return $next($request);
-    //             }
-    //             else
-    //             {
-    //             return redirect('/home')->with('status','Access Denied! As you are not an Admin');
-    //             }
-                
-    //      }
-                
-    //             else{
-    //             return redirect('/login')->with('status','please login first');
-                
-    //             } 
-                
-                
-    // }
-
 
 // ************ register *******************
 
@@ -177,37 +146,6 @@ public function updateUser(Request $request,$id)
   $user->password = bcrypt($request->password);
   $user->save();
   return response($user,200);
- 
-// try{
-//     $user = auth()->userOrFail();
-// }catch(UserNotDefinedException $e){
-//     return response()->json(['error' => $e->getMessage()]);
-// }
-// if($user->role =="admin"){
-//     $user = User::find($id);
-//     if($user){
-//         $user->update($request->all());
-//         if($request->password){
-//             $user->password = bcrypt($request->password);
-//             $user->save();
-//         }
-
-//         $response['status'] = 1;
-//         $response['message'] = 'Data updated successfully';
-//         $response['code'] = 200;
-//     }
-//     else{
-//         $response['status'] = 0;
-//         $response['message'] = 'User not found';
-//         $response['code'] = 404;
-//     }
-// }
-// else{
-//     return "You Are Not Admin";
-// }
-// return response()->json($response);
-
-
 
 
 }
@@ -226,118 +164,6 @@ return response()->json(null,204);
 }
 
 
-        //admin 
-//    $user = auth()->user();
-//    if(auth()->user()->hasRole('user')){
-
-//         $data['token']=auth()->claims([
-//             'user_id' => $user-> id,
-//             'email' => $user-> email,
-//             'role'=>$user-> role
-//         ])->attempt($credentials);
-
-//         $response['data']= $data;
-//         $response['status']=1;
-//         $response['code']=200;
-//         $response['message']='login successfully';
-//         return response()->json($response);
-//         }
-
-//         elseif(auth()->user()->hasRole('admin')){
-//             return redirect()->route('admin.home');
-//         }else{
-//             return response()->json([
-//                 'status' => false,
-//                 'message' => 'Stranger'
-//             ]);
-//         }
-
-   
-
-   
-
-
-
-    
-    
-
-
-
-
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-
-
-    // public function create()
-    // {
-    //     //
-    // }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-
-
-    // public function store(Request $request)
-    // {
-    //     //
-    // }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-
-
-    // public function show($id)
-    // {
-    //     //
-    // }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-
-
-    // public function edit($id)
-    // {
-    //     //
-    // }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-
-
-    // public function update(Request $request, $id)
-    // {
-    //     //
-    // }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    // public function destroy($id)
-    // {
-    //     //
-    // }
+ 
+  
 }

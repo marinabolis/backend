@@ -37,33 +37,6 @@ class OrderController extends Controller
 
 // *********************addOrder***************************
 
-// public function addOrder(Request $request)
-// {
-// // *******************  validation *****************
-//       $validator = Validator::make($request -> all(),[
-//         'total_cost' => 'required',
-//         'shipping_address' => 'required',
-//         'status' => 'required',
-//         // 'user_id' => 'required'
-//       ]);
-// if ( $validator -> fails()){
-//   return Response() ->json($validator-> errors());
-// }
-
-
-
-// $order = Order::create($request->validated());  
-// $order->drugs()->attach($request->input('drug_id'));          
-
-// return new OrderResource($order);
-
-
-// ******************** ********************
-
-  // $order = Order::create($request->all());
-  //  return response($order,201);
-
-
 
   /**
      * Store a newly created resource in storage.
@@ -73,37 +46,10 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //dd( $request->user());
+    
         $total_cost = 0;
 
-        // if ($request->user()->role == 'admin') {
-        //     if (!$request->user_id) {
-        //         return response()->json('Please Provide User', 404);
-        //     }
-        //     $order = Order::create([
-        //         'user_id' => $request->user_id,
-        //         'shipping_address' => $request->shipping_address,
-        //     ]);
-        //     $order->save();
-
-        //     foreach ($request->products as $product) {
-        //         $selectedProduct = Product::where('id', $product['id'])->first();
-        //         if ($selectedProduct) {
-        //             $count = $product['quantity'];
-        //             $total_cost += $selectedProduct->price * $count;
-
-        //             $order->products()->attach($selectedProduct->id, ['product_quantity' => $count]);
-        //         }
-        //     }
-        //     $order->update([
-        //         'total_cost' => $total_cost
-        //     ]);
-
-        //     $order->save();
-
-
-        //     return Order::where('id', $order->id)->with('products')->first();
-        // }
+    
 
         $order = Order::create([
             'user_id' => $request->id,
@@ -111,7 +57,7 @@ class OrderController extends Controller
         ]);
 
         $order->save();
-       //return $order;
+   
         foreach ($request->drugs as $drug) {  
             $selectedDrug = Drug::where('id', $drug['id'])->first();
             if ($selectedDrug) {
@@ -130,21 +76,9 @@ class OrderController extends Controller
 
         return Order::where('id', $order->id)->with('drugs')->first();
     }
-// }
 
 
-// *********************updateOrder***************************
 
-// public function updateOrder(Request $request,$id)
-// {
-
-//   $order = Order::find($id);
-//   if(is_null($order)){
-//     return response()->json(['message'=>'Order Not Found'],404);
-//   }
-//   $order->update($request->all());
-//   return response($order,200);
-// }
 
 
 // ********************* updateOrder new ***************************
@@ -160,16 +94,7 @@ public function updateOrder(Request $request, $id)
 
 $order = Order::find($id);
 
-// if (!$order) {
-// return "No Order Found";
-// }
 
-// if (!$request->anyFilled($request->all()) == null) {
-// return 'Please Enter A valid Value';
-// }
-
-// if ($order)
-// ]);
 $order->status = $request->status;
 $order->save();
 return response()->json(array('order' => $order), 200);
@@ -218,7 +143,6 @@ return "denied";
 return Order::destroy($id);
 } 
 
-// *********************  rel bet user & ***************************
 
 
   

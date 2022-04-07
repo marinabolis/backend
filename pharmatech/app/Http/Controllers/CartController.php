@@ -26,7 +26,7 @@ class CartController extends Controller
   // *************************** show Cart  ************************************
   public function showCart($id)
   {
-    //********************** get cart bl drugs bto3o   by  user_id ********* */
+    
     $cart = Cart::with('drugs')->where('user_id', $id)->first();
     return  $cart;
   }
@@ -100,9 +100,9 @@ class CartController extends Controller
 
   public function store(Request $request)
   {
-    // dd( $request->user());
+ 
     $cart = Cart::create([
-      // 'user_id' => $request->user()->id  
+   
       'user_id' => $request->id
     ]);
     $cart->save();
@@ -151,28 +151,7 @@ class CartController extends Controller
 
     return Cart::where('id', $cart->id)->with('drugs')->first();
   }
-  //*********************** getDrugsForCartsIds (show) *************************** */
-  // public function getDrugsForCartsIds($id)
-  // {
-  //   return $cart = Cart::with('drugs')->find($id);
-  // }
 
-  // *************************** delete  done ************************************
-
-  // public function deleteeeee(Request $request, $id)
-  // {
-
-  //   $cart = Cart::find($id);
-  //   //return $cart; 
-  //   if (!$cart) {
-
-  //     return ["result" => "store Drugs In Cart Not removed "];
-  //   } else {
-
-  //     $cart->drugs()->detach($request->id);
-  //     return response()->json(['message' => 'success'], 200);
-  //   }
-  // }
 
   //************************* destroy ************************************* */
   /**
@@ -195,8 +174,7 @@ class CartController extends Controller
   public function show($id)
   {
     $cart = Cart::with('drugs')->where('user_id', $id)->first();
-    // $product = Cart::with('products')->where('user_id', $request->user()->id)->get();
-    // $cart = Cart::with('products')->where('user_id', $request->user()->id)->find($id);
+  
 
     return response()->json($cart, 200);
   }

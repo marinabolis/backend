@@ -6,11 +6,11 @@ use App\Models\Category;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-// use Illuminate\Database\Eloquent\SoftDeletes;
+
 class Drug extends Model
 {
     use HasFactory;
-    // use SoftDeletes;
+ 
 
     public $timestamps = false;
 
@@ -26,9 +26,7 @@ class Drug extends Model
     ];
     
 
-    //******************** hidden ***************** */
-//    protected $hidden = ['created_at','updated_at','pivot' ];
-    //******************************** */
+
 
     
 

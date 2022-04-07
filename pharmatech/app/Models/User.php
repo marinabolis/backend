@@ -9,9 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Laravel\Sanctum\HasApiTokens;
-// use App\Models\HasFactory;
-// use App\Models\Drug;
-// use App\Models\Cart;
+
 
 
 class User  extends Authenticatable implements JWTSubject
@@ -77,12 +75,7 @@ class User  extends Authenticatable implements JWTSubject
         return [];
     }
 
-// relation between tables
 
-// m:m user & drug 
-// public function drugs() {
-//     return $this->belongsToMany(Drug::class);
-// }
 
 public function cart() {
 
